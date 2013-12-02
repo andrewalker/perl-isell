@@ -17,7 +17,7 @@ tags
 cover_db/
 
 # local config
-perlpro_web_local.*
+isell_web_local.*
 
 # log4perl config
 l4p.conf
