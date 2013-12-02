@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Visualizar cliente - iSell</title>
+
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+
+        <div id="header">
+            <div class="container">
+                <div id="logo" class="pull-left">
+                    <span class="lead">iSell</span>
+                </div>
+                <div id="user" class="pull-right">
+                  <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-off"></span> Logout</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div id="menu">
+            <div class="container">
+
+                <ul class="nav nav-pills">
+                    <li><a href="index.html">Vendas</a></li>
+                    <li><a href="clients.html">Clientes</a></li>
+                    <li><a href="categories.html">Categorias</a></li>
+                    <li><a href="products.html">Produtos</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div id="content">
+            <div class="container" id="categories">
+
+                <div class="page-title">
+                    <h2>Gerenciar Categorias</h2>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-6">
+
+                         <table class="table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10%;">ID</th>
+                                    <th style="width: 55%;">Nome</th>
+                                    <th style="width: 10%;">Produtos</th>
+                                    <th style="width: 25%;">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>01001</td>
+                                    <td>Jogos</td>
+                                    <td>05</td>
+                                    <td>
+                                        <a href="#modal-edit-category" data-toggle="modal">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>&nbsp;
+                                        <a href="#">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <ul class="pagination">
+                            <li><a href="#">&laquo;</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <form class="form-inline">
+
+                            <p class="lead">Adicionar categoria</p>
+
+                            <div class="form-group">
+                                <label class="sr-only" for="category_name">Nome da categoria</label>
+                                <input type="text" class="form-control" id="category_name" placeholder="Nome da categoria">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="sr-only" for="category_parent">Categoria pai</label>
+                                <select class="form-control" id="category_parent">
+                                    <option value="">Categoria pai</option>
+                                    <option value="cds">CDs</option>
+                                    <option value="jogos">Jogos</option>
+                                </select>
+                            </div>
+
+                            <button type="button" class="btn btn-primary">Adicionar</button>
+                        </form>
+                    </div>
+                </div>
+
+                <hr>
+
+            </div>
+        </div>
+
+
+        <div id="modal-edit-category" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Editar categoria</h4>
+                    </div>
+
+                    <form role="form">
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="new_cat_name">Nome</label>
+                                <input type="text" class="form-control" id="new_cat_name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="new_cat_parent">Categoria pai</label>
+                                <select class="form-control" id="new_cat_parent">
+                                    <option value="">Categoria pai</option>
+                                    <option value="cds">CDs</option>
+                                    <option value="jogos">Jogos</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary">Adicionar</button>
+                        </div>
+                    </form>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script>
+    </body>
+</html>

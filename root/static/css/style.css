@@ -1,0 +1,105 @@
+/* main elements */
+
+#header, #footer {
+    padding: 15px 0;
+    background: #EEEEEE;
+}
+
+#menu {
+    background: #333;
+    padding: 5px 0;
+}
+
+#content {
+    min-height: 300px;
+    margin: 50px 0;
+}
+
+/* header elements */
+
+.logo h1{
+    color: #666666;
+    font-weight: 100;
+    font-size: 120px;
+}
+
+#header .nav {
+    margin-top: 30px;
+}
+
+#search_form {
+    width: 400px;
+    margin-top: 30px;
+    text-align: right;
+}
+
+#header_search { width: 300px; }
+
+/* home / list / search */
+
+#search_filters .lead {
+    padding: 10px;
+    background: #333;
+    color: #FFF;
+}
+
+#search_filters .one_filter { margin-bottom: 30px; }
+#search_filters .one_filter .filter_title{
+    padding: 10px;
+    background: #ccc;
+    margin: 0;
+}
+
+#search_filters .one_filter .filter_content {
+    padding: 10px;
+    background: #f3f3f3;
+}
+
+.info_filters {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+
+.info_filters .pull-left .lead { margin: 20px 0 0; }
+.info_filters .pull-right dt { padding-top: 7px; }
+
+
+.one_product .title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: normal;
+    height: 60px;
+}
+
+.one_product .price {
+    font-size: 22px;
+}
+
+.one_product .purchase {
+    padding-top: 5px;
+    border-top: 1px solid #ddd;
+    margin-top: 5px;
+}
+
+/* page elements */
+
+.page-title {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+/* single product */
+.single_product .product_data .price_conditions strong{
+    font-size: 48px;
+}
+
+.single_product .product_data .description {
+    margin: 40px 0;
+}
+
+/* checkout & shopping-cart */
+
+.checkout-table td, .checkout-table th {
+    font-size: 18px;
+}
