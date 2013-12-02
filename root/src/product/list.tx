@@ -135,11 +135,11 @@
                         <ul class="pagination">
                             
                             <: if 0 < $pager.current_page - 1{ :>
-                            <li><a id="page-<: $pager.current_page + -1 :>">&laquo;</a></li>
+                            <li><a id="page-<: $pager.current_page -1 :>">&laquo;</a></li>
                             <: 
                             }
-                            if $pager.total_pages < $pager.current_page{ :>
-                            <li><a href="?page=<: $pager.current_page + 1 :>">&raquo;</a></li>
+                            if $pager.total_pages < $pager.current_page+1{ :>
+                            <li><a id="page-<: $pager.current_page + 1 :>">&raquo;</a></li>
                             <:}:>
                         </ul>
 
