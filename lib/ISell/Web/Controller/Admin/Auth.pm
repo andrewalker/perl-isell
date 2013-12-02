@@ -34,7 +34,7 @@ sub login :Path('/admin/login') {
 sub logout :Path('/admin/logout') {
     my ($self, $ctx) = @_;
 
-    $ctx->session_destroy();
+    $ctx->delete_session();
     $ctx->res->redirect('/admin/login');
 }
 
