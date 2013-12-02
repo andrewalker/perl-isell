@@ -86,30 +86,22 @@
                         </tr>
                     </thead>
                     <tbody>
+:                       for $sales -> $s {
                         <tr>
-                            <td>01001</td>
-                            <td>25/11/2013</td>
-                            <td>João da Silva</td>
-                            <td>Americana</td>
-                            <td>Em Aberto</td>
+                            <td><: $s.id :></td>
+                            <td><: $s.date :></td>
+                            <td><: $s.client :></td>
+                            <td><: $s.city :></td>
+                            <td><: $s.status :></td>
                             <td>
-                                <a href="/admin/sale/1"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a href="/admin/sale/<: $s.id :>"><span class="glyphicon glyphicon-pencil"></span></a>
                                 <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
                             </td>
                         </tr>
+:                       }
                     </tbody>
 
                 </table>
-
-                <ul class="pagination">
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&raquo;</a></li>
-                </ul>
 
             </div>
         </div>
