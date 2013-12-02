@@ -2,10 +2,10 @@
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
-        <title>Produtos - iSell</title>
+        <title>Clientes - iSell</title>
 
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/style_admin.css">
     </head>
     <body>
 
@@ -26,9 +26,9 @@
 
                 <ul class="nav nav-pills">
                     <li><a href="index.html">Vendas</a></li>
-                    <li><a href="clients.html">Clientes</a></li>
+                    <li class="active"><a href="clients.html">Clientes</a></li>
                     <li><a href="categories.html">Categorias</a></li>
-                    <li class="active"><a href="products.html">Produtos</a></li>
+                    <li><a href="products.html">Produtos</a></li>
                 </ul>
 
             </div>
@@ -41,30 +41,19 @@
                     <div class="row">
                         <form class="form-inline" role="form">
                             <div class="col-md-6">
-                                <label for="product">Procurar Produtos</label><br>
+                                <label for="client">Procurar Cliente</label><br>
                                 <div class="form-group">
-                                    <input type="text" id="product" name="product" class="form-control filters-input-large" placeholder="Digite um ID ou nome">
+                                    <input type="text" id="client" name="client" class="form-control filters-input-large" placeholder="Digite um ID, nome, CPF ou email">
                                 </div>
                                 <button type="submit" class="btn btn-warning">Buscar</button>
                             </div>
 
                             <div class="col-md-2 col-md-offset-2">
-                                <label for="product-category">Categoria</label><br>
+                                <label for="client-city">Cidade</label><br>
                                 <div class="form-group">
-                                    <select id="product-category" class="form-control filters-select">
-                                        <option value="jogos">Jogos</option>
-                                        <option value="cds">CDs</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-2">
-                                <label for="client-orderby">Ordenação</label><br>
-                                <div class="form-group">
-                                    <select id="client-orderby" class="form-control filters-select">
-                                        <option value="id">ID</option>
-                                        <option value="name">Nome</option>
-                                        <option value="category">Categoria</option>
+                                    <select id="client-city" class="form-control filters-select">
+                                        <option value="americana">Americana</option>
+                                        <option value="sao-carlos">São Carlos</option>
                                     </select>
                                 </div>
                             </div>
@@ -76,8 +65,9 @@
                     <thead>
                         <tr>
                             <th style="width:5%;">ID</th>
-                            <th style="width:40%;">Nome</th>
-                            <th style="width:30%;">Categorias</th>
+                            <th style="width:10%;">CPF</th>
+                            <th style="width:30%;">Nome</th>
+                            <th style="width:20%;">E-mail</th>
                             <th style="width:15%;">Compras</th>
                             <th style="width:10%;">Ações</th>
                         </tr>
@@ -85,11 +75,12 @@
                     <tbody>
                         <tr>
                             <td>01001</td>
-                            <td>Battlefield 4</td>
-                            <td>Jogos, CDs</td>
-                            <td>50</td>
+                            <td>123.456.789-10</td>
+                            <td>João da Silva</td>
+                            <td>joao@silva.com.br</td>
+                            <td>5</td>
                             <td>
-                                <a href="add_product.html"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a href="single_client.html"><span class="glyphicon glyphicon-pencil"></span></a>
                                 <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
                             </td>
                         </tr>
@@ -113,6 +104,6 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/scripts.js"></script>
+        <script type="text/javascript" src="/static/js/scripts_admin.js"></script>
     </body>
 </html>
