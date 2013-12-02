@@ -13,7 +13,7 @@ sub list {
     };
     my $rs = $self;
 
-    if (my $o = $p->{order}) {
+    if (my $o = $p->{sort}) {
         if (substr($o, 0, 1) eq '-') {
             $opts->{order_by} = { -desc => substr $o, 1 };
         }
@@ -36,6 +36,14 @@ sub list {
         else {
             $rs = $rs->search({ category_id => { -in => $id } });
         }
+    }
+
+    if (my $price = $p->{price_from}) {
+        $rs = $rs->search({ price => { '>=' => $price } });
+    }
+
+    if (my $price = $p->{price_to}) {
+        $rs = $rs->search({ price => { '<=' => $price } });
     }
 
     my $result = $rs->search($search, $opts);
