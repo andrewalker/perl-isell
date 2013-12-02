@@ -18,8 +18,15 @@
 
                 <div class="pull-right">
                     <ul class="nav nav-pills pull-right">
+                        <: if $Client{ :> Olá <: $Client.first_name :>, seja bem vindo ao iSell! 
+                        <a href="/client/logout">Logout</a>
+                        <:
+                    }
+                    else
+                    { :>
                         <li><a href="/client/login">Login</a></li>
                         <li><a href="/client/signup">Cadastre-se</a></li>
+                    <:}:>
                     </ul>
 
                     <div class="clearfix"></div>

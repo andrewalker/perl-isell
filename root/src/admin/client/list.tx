@@ -15,8 +15,7 @@
                     <span class="lead">iSell</span>
                 </div>
                 <div id="user" class="pull-right">
-                  <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-off"></span> Logout</a>
-                </div>
+                  <a href="/admin/logout" class="btn btn-danger"><span class="glyphicon glyphicon-off"></span> Logout</a>
                 <div class="clearfix"></div>
             </div>
         </div>
