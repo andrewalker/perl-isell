@@ -6,6 +6,14 @@ BEGIN { extends 'Catalyst::Controller' }
 
 __PACKAGE__->config(namespace => '');
 
+sub begin : Private {
+    my ( $self, $c ) = @_;
+
+    if (my $cl = $c->session->{client}) {
+        $c->stash(Client => $cl);
+    }
+}
+
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
     $c->stash(current_model => 'DB::Product');

@@ -18,11 +18,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr id="product-1">
+:                       for $items -> $item {
+                            <tr>
                                 <td class="text-center">1</td>
-                                <td>Battlefield 4</td>
-                                <td>R$ 1.200,00</td>
+                                <td><: $item.name :></td>
+                                <td>R$ <: $item.price :></td>
                             </tr>
+:                       }
                         </tbody>
                     </table>
 
@@ -39,16 +41,16 @@
 
                             <dl class="dl-horizontal">
                               <dt>Nome</dt>
-                              <dd>Fulano de Tal</dd>
+                              <dd><: $Client.first_name :> <: $Client.last_name :></dd>
 
                               <dt>Telefone</dt>
-                              <dd>(xx) 1234-5678</dd>
+                              <dd><: $Client.telephone :></dd>
 
                               <dt>CPF</dt>
-                              <dd>123.456.789-10</dd>
+                              <dd><: $Client.cpf :></dd>
 
                               <dt>Email</dt>
-                              <dd></dd>
+                              <dd><: $Client.email :></dd>
                             </dl>
 
                         </div>
@@ -57,13 +59,13 @@
                             <p class="lead">&nbsp;</p>
                             <dl class="dl-horizontal">
                               <dt>Total dos Produtos</dt>
-                              <dd>R$ 1.200,00</dd>
+                              <dd>R$ <: $total :></dd>
 
                               <dt>Frete</dt>
-                              <dd>R$ 30,00</dd>
+                              <dd>R$ 0,00</dd>
 
                               <dt>Total da Compra</dt>
-                              <dd>R$ 1.230,00</dd>
+                              <dd>R$ <: $total :></dd>
                             </dl>
                         </div>
                     </div><!-- end .row -->

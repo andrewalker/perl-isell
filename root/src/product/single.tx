@@ -29,7 +29,7 @@
                                 </div><!-- end .description -->
 
                                 <div class="purchase text-right">
-                                    <a href="/shopping_cart" class="btn btn-lg btn-success">Comprar</a>
+                                    <a href="/shopping_cart/add/<: $product.id :>" class="btn btn-lg btn-success">Comprar</a>
                                 </div>
                             </div><!-- end .product_data -->
 
