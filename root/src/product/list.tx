@@ -85,7 +85,7 @@
                     <div class="col-md-9">
                         <div class="info_filters">
                             <div class="pull-left">
-                                <p class="lead">26 Produtos Encontrados</p>
+                                <p class="lead"><: $pager.total_entries :> Produtos Encontrados</p>
                             </div>
 
                             <div class="pull-right">
@@ -93,9 +93,9 @@
                                     <dt>Ordenar</dt>
                                     <dd>
                                         <select id="orderby" class="form-control">
-                                            <option value="name">Por nome</option>
-                                            <option value="price_asc">Menor preço</option>
-                                            <option value="price_dsc">Maior preço</option>
+                                            <option value="-name">Por nome</option>
+                                            <option value="+price">Menor preço</option>
+                                            <option value="-price">Maior preço</option>
                                         </select>
                                     </dd>
                                 </dl>
@@ -142,4 +142,9 @@
 
             </div><!-- end .container -->
         </div><!-- end #content -->
+        <script type="text/javascript">
+            $('#orderby').change(function () {
+                location.href = location.search ? location.href + '&sort=' + $('#orderby').val() : location.href + '?sort=' + $('#orderby').val();
+            });
+        </script>
 <: include 'inc/footer.tx' :>

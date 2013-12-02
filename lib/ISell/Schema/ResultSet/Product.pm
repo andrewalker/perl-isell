@@ -38,6 +38,14 @@ sub list {
         }
     }
 
+    if (my $price = $p->{price_from}) {
+        $rs = $rs->search({ price => { '>=' => $price } });
+    }
+
+    if (my $price = $p->{price_to}) {
+        $rs = $rs->search({ price => { '<=' => $price } });
+    }
+
     my $result = $rs->search($search, $opts);
 
     return {
