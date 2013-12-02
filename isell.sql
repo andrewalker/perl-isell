@@ -14,16 +14,6 @@ SET client_min_messages = warning;
 
 CREATE SCHEMA isell;
 
-
-ALTER SCHEMA isell OWNER TO andre;
-
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
 --
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -43,39 +33,25 @@ SET default_with_oids = false;
 
 CREATE TABLE client (
     id SERIAL NOT NULL,
-    version bigint NOT NULL,
-    address character varying(255) NOT NULL,
-    city character varying(255) NOT NULL,
-    cpf character varying(255) NOT NULL,
-    email character varying(255) NOT NULL,
-    first_name character varying(255) NOT NULL,
-    last_name character varying(255) NOT NULL,
-    state character varying(255) NOT NULL,
-    telephone character varying(255) NOT NULL
+    login text not null,
+    password text not null,
+    address text NOT NULL,
+    city text NOT NULL,
+    cpf text NOT NULL,
+    email text NOT NULL,
+    first_name text NOT NULL,
+    last_name text NOT NULL,
+    state text NOT NULL,
+    telephone text NOT NULL
 );
-
-
-ALTER TABLE isell.client OWNER TO andre;
-
---
--- Name: payment; Type: TABLE; Schema: isell; Owner: andre; Tablespace: 
---
 
 CREATE TABLE payment (
     id SERIAL NOT NULL,
-    version bigint NOT NULL,
-    comments text NOT NULL,
     confirmed_at timestamp without time zone NOT NULL,
     started_at timestamp without time zone NOT NULL,
-    status character varying(255) NOT NULL
+    status text NOT NULL
+    comments text NOT NULL,
 );
-
-
-ALTER TABLE isell.payment OWNER TO andre;
-
---
--- Name: product; Type: TABLE; Schema: isell; Owner: andre; Tablespace: 
---
 
 CREATE TABLE product (
     id SERIAL NOT NULL,
@@ -83,127 +59,37 @@ CREATE TABLE product (
     amount_in_stock integer NOT NULL,
     category_id bigint NOT NULL,
     description text NOT NULL,
-    image_url character varying(255) NOT NULL,
-    name character varying(255) NOT NULL,
+    image_url text NOT NULL,
+    name text NOT NULL,
     price real NOT NULL,
     year integer NOT NULL
 );
 
 
-ALTER TABLE isell.product OWNER TO andre;
-
---
--- Name: product_category; Type: TABLE; Schema: isell; Owner: andre; Tablespace: 
---
-
 CREATE TABLE product_category (
     id serial NOT NULL,
     version bigint NOT NULL,
-    name character varying(255) NOT NULL
+    name text NOT NULL
 );
-
-
-ALTER TABLE isell.product_category OWNER TO andre;
-
---
--- Name: role_sec; Type: TABLE; Schema: isell; Owner: andre; Tablespace: 
---
-
-CREATE TABLE role_sec (
-    id serial NOT NULL,
-    version bigint NOT NULL,
-    authority character varying(255) NOT NULL
-);
-
-
-ALTER TABLE isell.role_sec OWNER TO andre;
-
---
--- Name: shopping_order; Type: TABLE; Schema: isell; Owner: andre; Tablespace: 
---
 
 CREATE TABLE shopping_order (
     id serial NOT NULL,
-    version bigint NOT NULL,
     client_id bigint NOT NULL,
     created_at timestamp without time zone NOT NULL
 );
 
 
-ALTER TABLE isell.shopping_order OWNER TO andre;
-
---
--- Name: shopping_order_item; Type: TABLE; Schema: isell; Owner: andre; Tablespace: 
---
-
 CREATE TABLE shopping_order_item (
     shopping_order_id bigint NOT NULL,
     product_id bigint NOT NULL,
-    version bigint NOT NULL,
     quantity integer NOT NULL
 );
 
-
-ALTER TABLE isell.shopping_order_item OWNER TO andre;
-
---
--- Name: shopping_order_payment; Type: TABLE; Schema: isell; Owner: andre; Tablespace: 
---
 
 CREATE TABLE shopping_order_payment (
     shopping_order_payments_id bigint,
     payment_id bigint
 );
-
-
-ALTER TABLE isell.shopping_order_payment OWNER TO andre;
-
---
--- Name: user_sec; Type: TABLE; Schema: isell; Owner: andre; Tablespace: 
---
-
-CREATE TABLE user_sec (
-    id serial NOT NULL,
-    version bigint NOT NULL,
-    account_expired boolean NOT NULL,
-    account_locked boolean NOT NULL,
-    enabled boolean NOT NULL,
-    password character varying(255) NOT NULL,
-    password_expired boolean NOT NULL,
-    username character varying(255) NOT NULL
-);
-
-
-ALTER TABLE isell.user_sec OWNER TO andre;
-
---
--- Name: user_sec_role_sec; Type: TABLE; Schema: isell; Owner: andre; Tablespace: 
---
-
-CREATE TABLE user_sec_role_sec (
-    role_sec_id bigint NOT NULL,
-    user_sec_id bigint NOT NULL
-);
-
-
-ALTER TABLE isell.user_sec_role_sec OWNER TO andre;
-
---
--- Data for Name: client; Type: TABLE DATA; Schema: isell; Owner: andre
---
-
-COPY client (id, version, address, city, cpf, email, first_name, last_name, state, telephone) FROM stdin;
-\.
-
-
---
--- Data for Name: payment; Type: TABLE DATA; Schema: isell; Owner: andre
---
-
-COPY payment (id, version, comments, confirmed_at, started_at, status) FROM stdin;
-\.
-
-
 --
 -- Data for Name: product; Type: TABLE DATA; Schema: isell; Owner: andre
 --
@@ -255,59 +141,6 @@ COPY product_category (id, version, name) FROM stdin;
 
 
 
---
--- Data for Name: role_sec; Type: TABLE DATA; Schema: isell; Owner: andre
---
-
-COPY role_sec (id, version, authority) FROM stdin;
-1	0	ROLE_ADMIN
-2	0	ROLE_CLIENT
-\.
-
-
---
--- Data for Name: shopping_order; Type: TABLE DATA; Schema: isell; Owner: andre
---
-
-COPY shopping_order (id, version, client_id, created_at) FROM stdin;
-\.
-
-
---
--- Data for Name: shopping_order_item; Type: TABLE DATA; Schema: isell; Owner: andre
---
-
-COPY shopping_order_item (shopping_order_id, product_id, version, quantity) FROM stdin;
-\.
-
-
---
--- Data for Name: shopping_order_payment; Type: TABLE DATA; Schema: isell; Owner: andre
---
-
-COPY shopping_order_payment (shopping_order_payments_id, payment_id) FROM stdin;
-\.
-
-
---
--- Data for Name: user_sec; Type: TABLE DATA; Schema: isell; Owner: andre
---
-
-COPY user_sec (id, version, account_expired, account_locked, enabled, password, password_expired, username) FROM stdin;
-3	0	f	f	t	$2a$10$GLHwNw0imOEV.Hp7MFKM2eovlRrffecOQfcA6xp.Ic6SmK9GPrB4y	f	admin
-\.
-
-
---
--- Data for Name: user_sec_role_sec; Type: TABLE DATA; Schema: isell; Owner: andre
---
-
-COPY user_sec_role_sec (role_sec_id, user_sec_id) FROM stdin;
-1	3
-\.
-
-
---
 -- Name: client_cpf_key; Type: CONSTRAINT; Schema: isell; Owner: andre; Tablespace: 
 --
 
@@ -475,10 +308,6 @@ ALTER TABLE ONLY shopping_order_item
 ALTER TABLE ONLY product
     ADD CONSTRAINT fked8dccef4c45a6b8 FOREIGN KEY (category_id) REFERENCES product_category(id);
 
-
---
--- Name: public; Type: ACL; Schema: -; Owner: postgres
---
 
 --
 -- PostgreSQL database dump complete
