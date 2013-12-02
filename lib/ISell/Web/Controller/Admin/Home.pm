@@ -15,7 +15,7 @@ sub sales :Chained('/admin/auth/base') PathPart('') Args(0) {
         push @result, {
             id => $_->id,
             date => $_->created_at->strftime('%d/%m/%Y'),
-            client => $_->client->name,
+            client => $_->client->first_name . ' ' . $_->client->last_name,
             city => $_->client->city,
             status => eval { $_->payments->search({}, { order_by => { -desc => 'created_at' } })->first->status },
         };
