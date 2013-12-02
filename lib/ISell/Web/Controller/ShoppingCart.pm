@@ -70,6 +70,7 @@ sub checkout : Chained('base') Args(0) {
     }
 
     $ctx->stash( template => 'checkout.tx', items => \@items, total => $total );
+    $ctx->session->{cart} = [];
 }
 
 __PACKAGE__->meta->make_immutable;
