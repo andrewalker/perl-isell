@@ -31,6 +31,8 @@ sub signup : Chained('base') Args(0) {
 sub login : Chained('base') Args(0) {
     my ($self, $ctx) = @_;
 
+    return unless $ctx->req->method eq 'POST';
+
     my $user = $ctx->req->body_params->{login};
     my $pass = $ctx->req->body_params->{password};
 
