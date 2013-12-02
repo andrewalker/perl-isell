@@ -67,15 +67,13 @@ __PACKAGE__->table("product");
 
 =head2 image_url
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 0
-  size: 255
 
 =head2 name
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 0
-  size: 255
 
 =head2 price
 
@@ -106,9 +104,9 @@ __PACKAGE__->add_columns(
   "description",
   { data_type => "text", is_nullable => 0 },
   "image_url",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  { data_type => "text", is_nullable => 0 },
   "name",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  { data_type => "text", is_nullable => 0 },
   "price",
   { data_type => "real", is_nullable => 0 },
   "year",
@@ -160,8 +158,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-12-02 02:25:49
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:J2UI6MMtldpaC5on9uGYEQ
+# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-12-02 03:33:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:mQx7cEfPiK5InxqwLV1N2w
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

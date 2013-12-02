@@ -44,58 +44,55 @@ __PACKAGE__->table("client");
   is_nullable: 0
   sequence: 'isell.client_id_seq'
 
-=head2 version
+=head2 login
 
-  data_type: 'bigint'
+  data_type: 'text'
+  is_nullable: 0
+
+=head2 password
+
+  data_type: 'text'
   is_nullable: 0
 
 =head2 address
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 0
-  size: 255
 
 =head2 city
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 0
-  size: 255
 
 =head2 cpf
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 0
-  size: 255
 
 =head2 email
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 0
-  size: 255
 
 =head2 first_name
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 0
-  size: 255
 
 =head2 last_name
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 0
-  size: 255
 
 =head2 state
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 0
-  size: 255
 
 =head2 telephone
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 0
-  size: 255
 
 =cut
 
@@ -107,24 +104,26 @@ __PACKAGE__->add_columns(
     is_nullable       => 0,
     sequence          => "isell.client_id_seq",
   },
-  "version",
-  { data_type => "bigint", is_nullable => 0 },
+  "login",
+  { data_type => "text", is_nullable => 0 },
+  "password",
+  { data_type => "text", is_nullable => 0 },
   "address",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  { data_type => "text", is_nullable => 0 },
   "city",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  { data_type => "text", is_nullable => 0 },
   "cpf",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  { data_type => "text", is_nullable => 0 },
   "email",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  { data_type => "text", is_nullable => 0 },
   "first_name",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  { data_type => "text", is_nullable => 0 },
   "last_name",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  { data_type => "text", is_nullable => 0 },
   "state",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  { data_type => "text", is_nullable => 0 },
   "telephone",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  { data_type => "text", is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
@@ -183,8 +182,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-12-02 02:25:49
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OJnKxbgjCtqXIBAuOhQktw
+# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-12-02 03:33:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:F4cjoWkxH81Z5ik3+jWzJw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -44,16 +44,6 @@ __PACKAGE__->table("payment");
   is_nullable: 0
   sequence: 'isell.payment_id_seq'
 
-=head2 version
-
-  data_type: 'bigint'
-  is_nullable: 0
-
-=head2 comments
-
-  data_type: 'text'
-  is_nullable: 0
-
 =head2 confirmed_at
 
   data_type: 'timestamp'
@@ -66,9 +56,13 @@ __PACKAGE__->table("payment");
 
 =head2 status
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 0
-  size: 255
+
+=head2 comments
+
+  data_type: 'text'
+  is_nullable: 0
 
 =cut
 
@@ -80,16 +74,14 @@ __PACKAGE__->add_columns(
     is_nullable       => 0,
     sequence          => "isell.payment_id_seq",
   },
-  "version",
-  { data_type => "bigint", is_nullable => 0 },
-  "comments",
-  { data_type => "text", is_nullable => 0 },
   "confirmed_at",
   { data_type => "timestamp", is_nullable => 0 },
   "started_at",
   { data_type => "timestamp", is_nullable => 0 },
   "status",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  { data_type => "text", is_nullable => 0 },
+  "comments",
+  { data_type => "text", is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
@@ -122,8 +114,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-12-02 02:25:49
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:0dfB3+xFzJF/v8JQQYW69w
+# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-12-02 03:33:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Z93k4bGnrcqf3j7psz2z+Q
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

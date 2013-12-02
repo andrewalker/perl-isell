@@ -44,11 +44,6 @@ __PACKAGE__->table("shopping_order");
   is_nullable: 0
   sequence: 'isell.shopping_order_id_seq'
 
-=head2 version
-
-  data_type: 'bigint'
-  is_nullable: 0
-
 =head2 client_id
 
   data_type: 'bigint'
@@ -70,8 +65,6 @@ __PACKAGE__->add_columns(
     is_nullable       => 0,
     sequence          => "isell.shopping_order_id_seq",
   },
-  "version",
-  { data_type => "bigint", is_nullable => 0 },
   "client_id",
   { data_type => "bigint", is_foreign_key => 1, is_nullable => 0 },
   "created_at",
@@ -138,8 +131,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-12-02 02:25:49
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:XzKUuiKWPg93lA2RIFsBwQ
+# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-12-02 03:33:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:T0xr20Ctv8iXTJnNYj6dJw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

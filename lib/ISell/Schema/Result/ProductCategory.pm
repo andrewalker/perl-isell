@@ -51,9 +51,8 @@ __PACKAGE__->table("product_category");
 
 =head2 name
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 0
-  size: 255
 
 =cut
 
@@ -68,7 +67,7 @@ __PACKAGE__->add_columns(
   "version",
   { data_type => "bigint", is_nullable => 0 },
   "name",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  { data_type => "text", is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
@@ -101,8 +100,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-12-02 02:25:49
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:iZ7vd8AK7zJiy9DGOy+1Ew
+# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-12-02 03:33:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8xyw82+53AjvJENj7W/Z4A
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -14,11 +14,6 @@ SET client_min_messages = warning;
 
 CREATE SCHEMA isell;
 
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
 SET search_path = isell, pg_catalog;
@@ -49,8 +44,8 @@ CREATE TABLE payment (
     id SERIAL NOT NULL,
     confirmed_at timestamp without time zone NOT NULL,
     started_at timestamp without time zone NOT NULL,
-    status text NOT NULL
-    comments text NOT NULL,
+    status text NOT NULL,
+    comments text NOT NULL
 );
 
 CREATE TABLE product (
@@ -189,21 +184,6 @@ ALTER TABLE ONLY product
     ADD CONSTRAINT product_pkey PRIMARY KEY (id);
 
 
---
--- Name: role_sec_authority_key; Type: CONSTRAINT; Schema: isell; Owner: andre; Tablespace: 
---
-
-ALTER TABLE ONLY role_sec
-    ADD CONSTRAINT role_sec_authority_key UNIQUE (authority);
-
-
---
--- Name: role_sec_pkey; Type: CONSTRAINT; Schema: isell; Owner: andre; Tablespace: 
---
-
-ALTER TABLE ONLY role_sec
-    ADD CONSTRAINT role_sec_pkey PRIMARY KEY (id);
-
 
 --
 -- Name: shopping_order_item_pkey; Type: CONSTRAINT; Schema: isell; Owner: andre; Tablespace: 
@@ -222,51 +202,11 @@ ALTER TABLE ONLY shopping_order
 
 
 --
--- Name: user_sec_pkey; Type: CONSTRAINT; Schema: isell; Owner: andre; Tablespace: 
---
-
-ALTER TABLE ONLY user_sec
-    ADD CONSTRAINT user_sec_pkey PRIMARY KEY (id);
-
-
---
--- Name: user_sec_role_sec_pkey; Type: CONSTRAINT; Schema: isell; Owner: andre; Tablespace: 
---
-
-ALTER TABLE ONLY user_sec_role_sec
-    ADD CONSTRAINT user_sec_role_sec_pkey PRIMARY KEY (role_sec_id, user_sec_id);
-
-
---
--- Name: user_sec_username_key; Type: CONSTRAINT; Schema: isell; Owner: andre; Tablespace: 
---
-
-ALTER TABLE ONLY user_sec
-    ADD CONSTRAINT user_sec_username_key UNIQUE (username);
-
-
---
 -- Name: fk19f52db75354bd4b; Type: FK CONSTRAINT; Schema: isell; Owner: andre
 --
 
 ALTER TABLE ONLY shopping_order
     ADD CONSTRAINT fk19f52db75354bd4b FOREIGN KEY (client_id) REFERENCES client(id);
-
-
---
--- Name: fk5e12412a221e265c; Type: FK CONSTRAINT; Schema: isell; Owner: andre
---
-
-ALTER TABLE ONLY user_sec_role_sec
-    ADD CONSTRAINT fk5e12412a221e265c FOREIGN KEY (role_sec_id) REFERENCES role_sec(id);
-
-
---
--- Name: fk5e12412a8fab99f2; Type: FK CONSTRAINT; Schema: isell; Owner: andre
---
-
-ALTER TABLE ONLY user_sec_role_sec
-    ADD CONSTRAINT fk5e12412a8fab99f2 FOREIGN KEY (user_sec_id) REFERENCES user_sec(id);
 
 
 --
