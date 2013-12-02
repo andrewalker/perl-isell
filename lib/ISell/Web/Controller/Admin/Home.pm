@@ -26,7 +26,7 @@ sub sales :Chained('/admin/auth/base') PathPart('') Args(0) {
 }
 
 sub sale :Chained('/admin/auth/base') PathPart('sale') Args(1) {
-    my ($self, $ctx) = @_;
+    my ($self, $ctx, $id) = @_;
     $ctx->stash( template => 'admin/sale.tx' );
 }
 
