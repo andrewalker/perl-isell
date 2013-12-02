@@ -1,0 +1,7 @@
+<model DB>
+    <connect_info>
+        dsn dbi:Pg:dbname=isell
+        user postgres
+        password "1234"
+    </connect_info>
+</model>
