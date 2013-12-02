@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Clientes - iSell</title>
+
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+
+        <div id="header">
+            <div class="container">
+                <div id="logo" class="pull-left">
+                    <span class="lead">iSell</span>
+                </div>
+                <div id="user" class="pull-right">
+                  <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-off"></span> Logout</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div id="menu">
+            <div class="container">
+
+                <ul class="nav nav-pills">
+                    <li><a href="index.html">Vendas</a></li>
+                    <li class="active"><a href="clients.html">Clientes</a></li>
+                    <li><a href="categories.html">Categorias</a></li>
+                    <li><a href="products.html">Produtos</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="filters">
+                    <div class="row">
+                        <form class="form-inline" role="form">
+                            <div class="col-md-6">
+                                <label for="client">Procurar Cliente</label><br>
+                                <div class="form-group">
+                                    <input type="text" id="client" name="client" class="form-control filters-input-large" placeholder="Digite um ID, nome, CPF ou email">
+                                </div>
+                                <button type="submit" class="btn btn-warning">Buscar</button>
+                            </div>
+
+                            <div class="col-md-2 col-md-offset-2">
+                                <label for="client-city">Cidade</label><br>
+                                <div class="form-group">
+                                    <select id="client-city" class="form-control filters-select">
+                                        <option value="americana">Americana</option>
+                                        <option value="sao-carlos">São Carlos</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="client-orderby">Ordenação</label><br>
+                                <div class="form-group">
+                                    <select id="client-orderby" class="form-control filters-select">
+                                        <option value="client">Cliente</option>
+                                        <option value="date">Data</option>
+                                        <option value="status">Status</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:5%;">ID</th>
+                            <th style="width:10%;">CPF</th>
+                            <th style="width:30%;">Nome</th>
+                            <th style="width:20%;">E-mail</th>
+                            <th style="width:15%;">Compras</th>
+                            <th style="width:10%;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01001</td>
+                            <td>123.456.789-10</td>
+                            <td>João da Silva</td>
+                            <td>joao@silva.com.br</td>
+                            <td>5</td>
+                            <td>
+                                <a href="single_client.html"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                <ul class="pagination">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script>
+    </body>
+</html>

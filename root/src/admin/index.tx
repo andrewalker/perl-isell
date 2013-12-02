@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Vendas - iSell</title>
+
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+
+        <div id="header">
+            <div class="container">
+                <div id="logo" class="pull-left">
+                    <span class="lead">iSell</span>
+                </div>
+                <div id="user" class="pull-right">
+                  <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-off"></span> Logout</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div id="menu">
+            <div class="container">
+
+                <ul class="nav nav-pills">
+                    <li class="active"><a href="index.html">Vendas</a></li>
+                    <li><a href="clients.html">Clientes</a></li>
+                    <li><a href="categories.html">Categorias</a></li>
+                    <li><a href="products.html">Produtos</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="filters">
+                    <div class="row">
+                        <form class="form-inline" role="form">
+                            <div class="col-md-4">
+                                <label for="sale-client">Procurar Venda</label><br>
+                                <div class="form-group">
+                                    <input type="text" id="sale-client" name="sale-client" class="form-control filters-input-medium" placeholder="Digite o nome de um cliente">
+                                </div>
+                                <button type="submit" class="btn btn-warning">Buscar</button>
+                            </div>
+
+                            <div class="col-md-2 col-md-offset-1">
+                                <label for="sale-status">Status</label><br>
+                                <div class="form-group">
+                                    <select id="sale-status" class="form-control filters-select" >
+                                        <option value="open">Em aberto</option>
+                                        <option value="canceled">Cancelada</option>
+                                        <option value="Closed">Completa</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="sale-date-start">Filtrar período</label><br>
+                                <div class="form-group">
+                                    <input type="text" id="sale-date-start" name="sale-date-start" class="form-control filters-input-small" placeholder="Data Inicial">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="sale-date-end" name="sale-date-end" class="form-control filters-input-small" placeholder="Data Final">
+                                </div>
+                                <button type="submit" class="btn btn-warning">Filtrar</button>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="sale-orderby">Ordenação</label><br>
+                                <div class="form-group">
+                                    <select id="sale-orderby" class="form-control filters-select" >
+                                        <option value="client">Cliente</option>
+                                        <option value="date">Data</option>
+                                        <option value="status">Status</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:5%;">ID</th>
+                            <th style="width:10%;">Data</th>
+                            <th style="width:30%;">Cliente</th>
+                            <th style="width:20%;">Cidade</th>
+                            <th style="width:15%;">Status</th>
+                            <th style="width:10%;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01001</td>
+                            <td>25/11/2013</td>
+                            <td>João da Silva</td>
+                            <td>Americana</td>
+                            <td>Em Aberto</td>
+                            <td>
+                                <a href="single_sale.html"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                <ul class="pagination">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script>
+    </body>
+</html>
