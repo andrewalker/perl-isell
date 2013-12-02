@@ -138,7 +138,7 @@
                             <li><a id="page-<: $pager.current_page -1 :>">&laquo;</a></li>
                             <: 
                             }
-                            if $pager.total_pages < $pager.current_page+1{ :>
+                            if $pager.total_pages != ($pager.current_page+1){ :>
                             <li><a id="page-<: $pager.current_page + 1 :>">&raquo;</a></li>
                             <:}:>
                         </ul>
