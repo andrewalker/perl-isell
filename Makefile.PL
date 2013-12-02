@@ -35,6 +35,7 @@ requires 'DateTime::Format::Pg';
 requires 'Crypt::Eksblowfish::Bcrypt';
 requires 'Catalyst::Model::DBIC::Schema';
 requires 'Text::Xslate';
+requires 'Catalyst::View::Xslate';
 requires 'HTML::FillInForm';
 test_requires 'Test::More' => '0.88';
 catalyst;
