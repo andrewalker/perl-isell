@@ -133,8 +133,14 @@
                         </div><!-- end .product_list -->
 
                         <ul class="pagination">
-                            <li><a href="?page=<: $pager.current_page - 1 :>">&laquo;</a></li>
+                            
+                            <: if 0 < $pager.current_page - 1{ :>
+                            <li><a id="page-<: $pager.current_page + -1 :>">&laquo;</a></li>
+                            <: 
+                            }
+                            if $pager.total_pages < $pager.current_page{ :>
                             <li><a href="?page=<: $pager.current_page + 1 :>">&raquo;</a></li>
+                            <:}:>
                         </ul>
 
                     </div><!-- end .col-md-9 -->

@@ -12,7 +12,7 @@
 
                         <div class="col-md-3">
                             <div class="product_photos">
-                                <img src="<: $product.image_url :>">
+                                <img src="<: $product.image_url :>" class="single_product_photo">
                             </div><!-- end .product_photos -->
                         </div><!-- end .col-md-6 -->
 

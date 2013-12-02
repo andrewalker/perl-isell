@@ -48,6 +48,11 @@
     max-height: 100px;
 }
 
+.single_product_photo{
+    max-width: 400px;
+    max-height: 300px;
+}
+
 #search_filters .one_filter { margin-bottom: 30px; }
 #search_filters .one_filter .filter_title{
     padding: 10px;
