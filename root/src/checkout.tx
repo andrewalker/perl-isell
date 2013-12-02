@@ -27,7 +27,7 @@
                     </table>
 
                     <div class="text-right">
-                        <a href="shopping_cart.html" class="btn btn-warning btn-lg">Alterar Produtos</a>
+                        <a href="/shopping_cart" class="btn btn-warning btn-lg">Alterar Produtos</a>
                     </div>
 
                     <p>&nbsp;</p>
