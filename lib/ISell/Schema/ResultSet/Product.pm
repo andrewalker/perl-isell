@@ -30,7 +30,12 @@ sub list {
     }
 
     if (my $id = $p->{category_id}) {
-        $rs = $rs->search({ category_id => $id });
+        if (!ref $id) {
+            $rs = $rs->search({ category_id => $id });
+        }
+        else {
+            $rs = $rs->search({ category_id => { -in => $id } });
+        }
     }
 
     my $result = $rs->search($search, $opts);

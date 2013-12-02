@@ -20,10 +20,11 @@ sub list : Chained('base') Args(0) {
     $ctx->stash(
         products => $list->{products},
         pager    => $list->{pager},
+        template => 'product/list.tx',
     );
 }
 
-sub show : Chained('base') Args(1) {
+sub single : Chained('base') PathPart('') Args(1) {
     my ($self, $ctx, $id) = @_;
 
     $ctx->stash( product => $ctx->model->find($id) );

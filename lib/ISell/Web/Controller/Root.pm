@@ -8,9 +8,8 @@ __PACKAGE__->config(namespace => '');
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
-
-    # Hello World
-    $c->response->body( $c->welcome_message );
+    $c->stash(current_model => 'DB::Product');
+    return $c->detach('/product/list');
 }
 
 sub default :Path {

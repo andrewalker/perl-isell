@@ -22,25 +22,25 @@
 
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="categories" value="jogos"> Jogos
+                                                <input type="checkbox" name="category_id" value="6"> Jogos
                                             </label>
                                         </div>
 
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="categories" value="cdds"> CDs
+                                                <input type="checkbox" name="category_id" value="4"> CDs
                                             </label>
                                         </div>
 
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="categories" value="livros"> Livros
+                                                <input type="checkbox" name="category_id" value="7"> Livros
                                             </label>
                                         </div>
 
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="categories" value="tablets"> Tablets
+                                                <input type="checkbox" name="category_id" value="5"> DVDs
                                             </label>
                                         </div>
 
