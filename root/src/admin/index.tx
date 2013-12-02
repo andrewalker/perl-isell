@@ -25,10 +25,10 @@
             <div class="container">
 
                 <ul class="nav nav-pills">
-                    <li class="active"><a href="index.html">Vendas</a></li>
-                    <li><a href="clients.html">Clientes</a></li>
-                    <li><a href="categories.html">Categorias</a></li>
-                    <li><a href="products.html">Produtos</a></li>
+                    <li class="active"><a href="/admin/">Vendas</a></li>
+                    <li><a href="/admin/client/list">Clientes</a></li>
+                    <li><a href="/admin/product/categories">Categorias</a></li>
+                    <li><a href="/admin/product/list">Produtos</a></li>
                 </ul>
 
             </div>
@@ -93,7 +93,7 @@
                             <td>Americana</td>
                             <td>Em Aberto</td>
                             <td>
-                                <a href="single_sale.html"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a href="/admin/sale/1"><span class="glyphicon glyphicon-pencil"></span></a>
                                 <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
                             </td>
                         </tr>

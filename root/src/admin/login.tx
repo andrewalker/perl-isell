@@ -19,16 +19,16 @@
                         </div>
 
                         <div id="login-form">
-                            <form role="form">
+                            <form role="form" method="post" action="">
 
                                 <div class="form-group">
                                     <label for="login">Login</label>
-                                    <input type="email" class="form-control" id="login">
+                                    <input type="text" class="form-control" id="login" name="login">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="password">Senha</label>
-                                    <input type="password" class="form-control" id="password">
+                                    <input type="password" class="form-control" id="password" name="password">
                                 </div>
 
                                 <input type="submit" class="btn btn-primary" value="Entrar">
