@@ -93,6 +93,7 @@
                                     <dt>Ordenar</dt>
                                     <dd>
                                         <select id="orderby" class="form-control">
+                                            <option value=""></option>
                                             <option value="-name">Por nome</option>
                                             <option value="+price">Menor preço</option>
                                             <option value="-price">Maior preço</option>

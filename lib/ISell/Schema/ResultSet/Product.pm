@@ -13,7 +13,7 @@ sub list {
     };
     my $rs = $self;
 
-    if (my $o = $p->{order}) {
+    if (my $o = $p->{sort}) {
         if (substr($o, 0, 1) eq '-') {
             $opts->{order_by} = { -desc => substr $o, 1 };
         }
