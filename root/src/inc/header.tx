@@ -18,15 +18,16 @@
 
                 <div class="pull-right">
                     <ul class="nav nav-pills pull-right">
-                        <: if $Client{ :> Olá <: $Client.first_name :>, seja bem vindo ao iSell! 
-                        <a href="/client/logout">Logout</a>
-                        <:
-                    }
-                    else
-                    { :>
+:                       if $Client {
+                        <div class="text-right">
+                            <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>Seu carrinho</a> |
+                            <a href="/client/logout">Logout</a> <br/>
+                        </div>
+                        Olá <: $Client.first_name :>, seja bem vindo ao iSell!
+:                       } else {
                         <li><a href="/client/login">Login</a></li>
                         <li><a href="/client/signup">Cadastre-se</a></li>
-                    <:}:>
+:                       }
                     </ul>
 
                     <div class="clearfix"></div>
