@@ -20,7 +20,7 @@
                         <tbody>
 :                       for $items -> $item {
                             <tr>
-                                <td class="text-center">1</td>
+                                <td class="text-center"><: $item.quantity :></td>
                                 <td><: $item.name :></td>
                                 <td>R$ <: $item.price :></td>
                             </tr>
@@ -75,9 +75,8 @@
                         <div class="col-md-3">
                             <p class="lead">Endereço</p>
                             <address>
-                                Rua Teste, 123 <br>
-                                São Carlos - SP<br>
-                                CEP 12345-678
+                                <: $Client.address :><br>
+                                <: $Client.city :> - <: $Client.state :><br>
                             </address>
                         </div>
 
