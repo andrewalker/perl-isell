@@ -133,12 +133,12 @@
                         </div><!-- end .product_list -->
 
                         <ul class="pagination">
-                            
-                            <: if 0 < $pager.current_page - 1{ :>
+
+                            <: if 0 < $pager.current_page - 1 { :>
                             <li><a id="page-<: $pager.current_page -1 :>">&laquo;</a></li>
-                            <: 
+                            <:
                             }
-                            if $pager.total_pages != ($pager.current_page+1){ :>
+                            if $pager.last_page != ($pager.current_page+1) { :>
                             <li><a id="page-<: $pager.current_page + 1 :>">&raquo;</a></li>
                             <:}:>
                         </ul>
