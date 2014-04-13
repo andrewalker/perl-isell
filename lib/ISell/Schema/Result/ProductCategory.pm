@@ -19,15 +19,13 @@ use base 'DBIx::Class::Core';
 
 =over 4
 
-=item * L<DBIx::Class::EncodedColumn>
-
 =item * L<DBIx::Class::InflateColumn::DateTime>
 
 =back
 
 =cut
 
-__PACKAGE__->load_components("EncodedColumn", "InflateColumn::DateTime");
+__PACKAGE__->load_components("InflateColumn::DateTime");
 
 =head1 TABLE: C<product_category>
 
@@ -44,11 +42,6 @@ __PACKAGE__->table("product_category");
   is_nullable: 0
   sequence: 'isell.product_category_id_seq'
 
-=head2 version
-
-  data_type: 'bigint'
-  is_nullable: 0
-
 =head2 name
 
   data_type: 'text'
@@ -64,8 +57,6 @@ __PACKAGE__->add_columns(
     is_nullable       => 0,
     sequence          => "isell.product_category_id_seq",
   },
-  "version",
-  { data_type => "bigint", is_nullable => 0 },
   "name",
   { data_type => "text", is_nullable => 0 },
 );
@@ -100,8 +91,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-12-02 03:33:44
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8xyw82+53AjvJENj7W/Z4A
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-04-13 19:57:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qdPk2QoJAZZA47rqdpWOSg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

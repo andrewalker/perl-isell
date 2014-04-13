@@ -19,15 +19,13 @@ use base 'DBIx::Class::Core';
 
 =over 4
 
-=item * L<DBIx::Class::EncodedColumn>
-
 =item * L<DBIx::Class::InflateColumn::DateTime>
 
 =back
 
 =cut
 
-__PACKAGE__->load_components("EncodedColumn", "InflateColumn::DateTime");
+__PACKAGE__->load_components("InflateColumn::DateTime");
 
 =head1 TABLE: C<shopping_order_item>
 
@@ -39,30 +37,31 @@ __PACKAGE__->table("shopping_order_item");
 
 =head2 shopping_order_id
 
-  data_type: 'bigint'
+  data_type: 'integer'
   is_foreign_key: 1
   is_nullable: 0
 
 =head2 product_id
 
-  data_type: 'bigint'
+  data_type: 'integer'
   is_foreign_key: 1
   is_nullable: 0
 
 =head2 quantity
 
   data_type: 'integer'
+  default_value: 1
   is_nullable: 0
 
 =cut
 
 __PACKAGE__->add_columns(
   "shopping_order_id",
-  { data_type => "bigint", is_foreign_key => 1, is_nullable => 0 },
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "product_id",
-  { data_type => "bigint", is_foreign_key => 1, is_nullable => 0 },
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "quantity",
-  { data_type => "integer", is_nullable => 0 },
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
@@ -93,7 +92,7 @@ __PACKAGE__->belongs_to(
   "product",
   "ISell::Schema::Result::Product",
   { id => "product_id" },
-  { is_deferrable => 0, on_delete => "NO ACTION", on_update => "NO ACTION" },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 =head2 shopping_order
@@ -108,12 +107,12 @@ __PACKAGE__->belongs_to(
   "shopping_order",
   "ISell::Schema::Result::ShoppingOrder",
   { id => "shopping_order_id" },
-  { is_deferrable => 0, on_delete => "NO ACTION", on_update => "NO ACTION" },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-12-02 03:33:44
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:s7U0ghLgJjqIAY/Z8vrk4w
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-04-13 19:57:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UqCAv5XLVAKcCYZmlIi7gw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

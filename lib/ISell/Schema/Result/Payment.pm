@@ -19,15 +19,13 @@ use base 'DBIx::Class::Core';
 
 =over 4
 
-=item * L<DBIx::Class::EncodedColumn>
-
 =item * L<DBIx::Class::InflateColumn::DateTime>
 
 =back
 
 =cut
 
-__PACKAGE__->load_components("EncodedColumn", "InflateColumn::DateTime");
+__PACKAGE__->load_components("InflateColumn::DateTime");
 
 =head1 TABLE: C<payment>
 
@@ -44,6 +42,12 @@ __PACKAGE__->table("payment");
   is_nullable: 0
   sequence: 'isell.payment_id_seq'
 
+=head2 shopping_order_id
+
+  data_type: 'integer'
+  is_foreign_key: 1
+  is_nullable: 0
+
 =head2 confirmed_at
 
   data_type: 'timestamp'
@@ -52,7 +56,9 @@ __PACKAGE__->table("payment");
 =head2 started_at
 
   data_type: 'timestamp'
+  default_value: current_timestamp
   is_nullable: 0
+  original: {default_value => \"now()"}
 
 =head2 status
 
@@ -62,7 +68,7 @@ __PACKAGE__->table("payment");
 =head2 comments
 
   data_type: 'text'
-  is_nullable: 0
+  is_nullable: 1
 
 =cut
 
@@ -74,14 +80,21 @@ __PACKAGE__->add_columns(
     is_nullable       => 0,
     sequence          => "isell.payment_id_seq",
   },
+  "shopping_order_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "confirmed_at",
   { data_type => "timestamp", is_nullable => 0 },
   "started_at",
-  { data_type => "timestamp", is_nullable => 0 },
+  {
+    data_type     => "timestamp",
+    default_value => \"current_timestamp",
+    is_nullable   => 0,
+    original      => { default_value => \"now()" },
+  },
   "status",
   { data_type => "text", is_nullable => 0 },
   "comments",
-  { data_type => "text", is_nullable => 0 },
+  { data_type => "text", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -98,24 +111,24 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
-=head2 shopping_order_payments
+=head2 shopping_order
 
-Type: has_many
+Type: belongs_to
 
-Related object: L<ISell::Schema::Result::ShoppingOrderPayment>
+Related object: L<ISell::Schema::Result::ShoppingOrder>
 
 =cut
 
-__PACKAGE__->has_many(
-  "shopping_order_payments",
-  "ISell::Schema::Result::ShoppingOrderPayment",
-  { "foreign.payment_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
+__PACKAGE__->belongs_to(
+  "shopping_order",
+  "ISell::Schema::Result::ShoppingOrder",
+  { id => "shopping_order_id" },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-12-02 03:33:44
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Z93k4bGnrcqf3j7psz2z+Q
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-04-13 19:57:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gMPGXNOyEEvQZRxXSUkg5w
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

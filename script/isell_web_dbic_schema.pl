@@ -8,7 +8,7 @@ use ISell::Web ();
 
 my $opts = {
     dump_directory => "$Bin/../lib",
-    components => [ 'EncodedColumn', 'InflateColumn::DateTime' ],
+    components => [ 'InflateColumn::DateTime' ],
     quote_names => 1,
     db_schema => [ 'isell' ],
 };

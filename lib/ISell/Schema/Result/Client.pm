@@ -19,15 +19,13 @@ use base 'DBIx::Class::Core';
 
 =over 4
 
-=item * L<DBIx::Class::EncodedColumn>
-
 =item * L<DBIx::Class::InflateColumn::DateTime>
 
 =back
 
 =cut
 
-__PACKAGE__->load_components("EncodedColumn", "InflateColumn::DateTime");
+__PACKAGE__->load_components("InflateColumn::DateTime");
 
 =head1 TABLE: C<client>
 
@@ -64,6 +62,11 @@ __PACKAGE__->table("client");
   data_type: 'text'
   is_nullable: 0
 
+=head2 state
+
+  data_type: 'text'
+  is_nullable: 0
+
 =head2 cpf
 
   data_type: 'text'
@@ -80,11 +83,6 @@ __PACKAGE__->table("client");
   is_nullable: 0
 
 =head2 last_name
-
-  data_type: 'text'
-  is_nullable: 0
-
-=head2 state
 
   data_type: 'text'
   is_nullable: 0
@@ -112,6 +110,8 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 0 },
   "city",
   { data_type => "text", is_nullable => 0 },
+  "state",
+  { data_type => "text", is_nullable => 0 },
   "cpf",
   { data_type => "text", is_nullable => 0 },
   "email",
@@ -119,8 +119,6 @@ __PACKAGE__->add_columns(
   "first_name",
   { data_type => "text", is_nullable => 0 },
   "last_name",
-  { data_type => "text", is_nullable => 0 },
-  "state",
   { data_type => "text", is_nullable => 0 },
   "telephone",
   { data_type => "text", is_nullable => 0 },
@@ -152,17 +150,17 @@ __PACKAGE__->set_primary_key("id");
 
 __PACKAGE__->add_unique_constraint("client_cpf_key", ["cpf"]);
 
-=head2 C<client_email_key>
+=head2 C<client_login_key>
 
 =over 4
 
-=item * L</email>
+=item * L</login>
 
 =back
 
 =cut
 
-__PACKAGE__->add_unique_constraint("client_email_key", ["email"]);
+__PACKAGE__->add_unique_constraint("client_login_key", ["login"]);
 
 =head1 RELATIONS
 
@@ -182,8 +180,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-12-02 03:33:44
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:F4cjoWkxH81Z5ik3+jWzJw
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-04-13 19:57:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JO3hH9YiJ2XpaA/LmLa5Sw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

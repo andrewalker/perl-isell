@@ -19,15 +19,13 @@ use base 'DBIx::Class::Core';
 
 =over 4
 
-=item * L<DBIx::Class::EncodedColumn>
-
 =item * L<DBIx::Class::InflateColumn::DateTime>
 
 =back
 
 =cut
 
-__PACKAGE__->load_components("EncodedColumn", "InflateColumn::DateTime");
+__PACKAGE__->load_components("InflateColumn::DateTime");
 
 =head1 TABLE: C<shopping_order>
 
@@ -46,14 +44,16 @@ __PACKAGE__->table("shopping_order");
 
 =head2 client_id
 
-  data_type: 'bigint'
+  data_type: 'integer'
   is_foreign_key: 1
   is_nullable: 0
 
 =head2 created_at
 
   data_type: 'timestamp'
+  default_value: current_timestamp
   is_nullable: 0
+  original: {default_value => \"now()"}
 
 =cut
 
@@ -66,9 +66,14 @@ __PACKAGE__->add_columns(
     sequence          => "isell.shopping_order_id_seq",
   },
   "client_id",
-  { data_type => "bigint", is_foreign_key => 1, is_nullable => 0 },
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "created_at",
-  { data_type => "timestamp", is_nullable => 0 },
+  {
+    data_type     => "timestamp",
+    default_value => \"current_timestamp",
+    is_nullable   => 0,
+    original      => { default_value => \"now()" },
+  },
 );
 
 =head1 PRIMARY KEY
@@ -97,7 +102,22 @@ __PACKAGE__->belongs_to(
   "client",
   "ISell::Schema::Result::Client",
   { id => "client_id" },
-  { is_deferrable => 0, on_delete => "NO ACTION", on_update => "NO ACTION" },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
+);
+
+=head2 payments
+
+Type: has_many
+
+Related object: L<ISell::Schema::Result::Payment>
+
+=cut
+
+__PACKAGE__->has_many(
+  "payments",
+  "ISell::Schema::Result::Payment",
+  { "foreign.shopping_order_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
 );
 
 =head2 shopping_order_items
@@ -115,24 +135,9 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 shopping_order_payments
 
-Type: has_many
-
-Related object: L<ISell::Schema::Result::ShoppingOrderPayment>
-
-=cut
-
-__PACKAGE__->has_many(
-  "shopping_order_payments",
-  "ISell::Schema::Result::ShoppingOrderPayment",
-  { "foreign.shopping_order_payments_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
-
-
-# Created by DBIx::Class::Schema::Loader v0.07036 @ 2013-12-02 03:33:44
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:T0xr20Ctv8iXTJnNYj6dJw
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-04-13 19:57:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UDXCfGlUeelaSnI8igHuIQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
