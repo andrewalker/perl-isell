@@ -22,16 +22,23 @@
                     <table class="table checkout-table">
                         <thead>
                             <tr>
-                                <th style="width: 10%;">Quantidade</th>
-                                <th style="width: 60%;">Produto</th>
+                                <th style="width: 130px;">Quantidade</th>
+                                <th>Produto</th>
                                 <th style="width: 15%;">Valor</th>
-                                <th style="width: 15%;"></th>
+                                <th style="width: 100px"></th>
                             </tr>
                         </thead>
                         <tbody>
 :                           for $items -> $item {
                             <tr>
-                                <td class="text-center"><input type="number" class="form-control" value="1"></td>
+                                <td class="text-center">
+                                <form action="/shopping_cart/update/<: $item.id :>" method="post" class="form-inline" role="form">
+                                    <div class="form-group">
+                                        <input type="number" style="width: 55px" class="form-control" name="quantity" value="<: $item.quantity :>" />
+                                    </div>
+                                    <button type="submit" class="btn btn-icon"><span class="glyphicon glyphicon-refresh"></span></button>
+                                </form>
+                                </td>
                                 <td><: $item.name :></td>
                                 <td>R$ <: $item.price :></td>
                                 <td class="text-center"><a href="/shopping_cart/remove/<: $item.id :>"><span class="glyphicon glyphicon-trash"></span> Remover</a></td>

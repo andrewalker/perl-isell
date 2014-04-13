@@ -1,6 +1,7 @@
 package ISell::Web::Controller::ShoppingCart;
 use Moose;
 use namespace::autoclean;
+use Scalar::Util qw/looks_like_number/;
 
 BEGIN { extends 'Catalyst::Controller' };
 
@@ -14,10 +15,12 @@ sub base : Chained('/') PathPrefix CaptureArgs(0) {
     }
 }
 
+# XXX: this should be POST
+# No time for that.
 sub add : Chained('base') Args(1) {
     my ($self, $ctx, $id) = @_;
 
-    my %cart = { $ctx->session->{cart} || {} };
+    my %cart = %{ $ctx->session->{cart} || {} };
 
     $cart{$id} = {
         created_at => time(),
@@ -34,6 +37,36 @@ sub add : Chained('base') Args(1) {
     );
 }
 
+sub update : Chained('base') Args(1) POST {
+    my ($self, $ctx, $id) = @_;
+
+    my $qty = $ctx->req->body_params->{quantity};
+
+    if (!looks_like_number($qty) || $qty <= 0) {
+        return $ctx->res->redirect(
+            $ctx->uri_for(
+                $self->action_for('list'),
+                { mid => $ctx->set_error_msg("Quantidade inválida.") }
+            )
+        );
+    }
+
+    my %cart = %{ $ctx->session->{cart} || {} };
+
+    $cart{$id}{quantity} = $qty;
+
+    $ctx->session->{cart} = \%cart;
+
+    return $ctx->res->redirect(
+        $ctx->uri_for(
+            $self->action_for('list'),
+            { mid => $ctx->set_status_msg("Quantidade atualizada.") }
+        )
+    );
+}
+
+# XXX: this should be DELETE
+# No time for that.
 sub remove : Chained('base') Args(1) {
     my ($self, $ctx, $id) = @_;
 
@@ -51,6 +84,8 @@ sub remove : Chained('base') Args(1) {
     );
 }
 
+# XXX: this should be POST
+# No time for that.
 sub clear : Chained('base') Args(0) {
     my ($self, $ctx) = @_;
 
@@ -71,15 +106,24 @@ sub list : Chained('base') PathPart('') Args(0) {
     $ctx->load_status_msgs;
 
     my %cart = %{ $ctx->session->{cart} || {} };
+    my $i;
 
-    my @items = map { $ctx->model('DB::Product')->find($cart{$_}) }
-                sort { $a->{created_at} <=> $b->{created_at} }
-                keys %cart;
+    my @items = map {
+        $i = $ctx->model('DB::Product')->find($_);
+        {
+            id       => $i->id,
+            name     => $i->name,
+            quantity => $cart{$_}{quantity},
+            price    => $i->price,
+        }
+      }
+      sort { $cart{$a}{created_at} <=> $cart{$b}{created_at} }
+      keys %cart;
 
     my $total = 0;
 
     for (@items) {
-        $total += $_->price * $cart{$_->id}{quantity};
+        $total += $_->{price} * $_->{quantity};
     }
 
     $ctx->stash(
@@ -89,6 +133,8 @@ sub list : Chained('base') PathPart('') Args(0) {
     );
 }
 
+# XXX: this should be POST
+# No time for that.
 sub checkout : Chained('base') Args(0) {
     my ($self, $ctx) = @_;
 
@@ -97,23 +143,32 @@ sub checkout : Chained('base') Args(0) {
         created_at => \"now()",
     });
 
-    my %cart  = %{ $ctx->session->{cart} || {} };
+    my %cart = %{ $ctx->session->{cart} || {} };
+    my $i;
 
-    my @items = map { $ctx->model('DB::Product')->find($cart{$_}) }
-                sort { $a->{created_at} <=> $b->{created_at} }
-                keys %cart;
+    my @items = map {
+        $i = $ctx->model('DB::Product')->find($_);
+        {
+            id       => $i->id,
+            name     => $i->name,
+            quantity => $cart{$_}{quantity},
+            price    => $i->price,
+        }
+      }
+      sort { $cart{$a}{created_at} <=> $cart{$b}{created_at} }
+      keys %cart;
 
     for (@items) {
         $order->add_to_shopping_order_items({
-            product_id => $_->id,
-            quantity => $cart{$_->id}{quantity},
+            product_id => $_->{id},
+            quantity => $_->{quantity},
         });
     }
 
     my $total = 0;
 
     for (@items) {
-        $total += $_->price * $cart{$_->id}{quantity};
+        $total += $_->{price} * $_->{quantity};
     }
 
     $ctx->session->{cart} = {};
