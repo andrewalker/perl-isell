@@ -21,7 +21,7 @@
 :                       if $Client {
                         <div class="text-right">
                             <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>Seu carrinho</a> |
-                            <a href="/client/logout">Logout</a> <br/>
+                            <a href="/client/logout"><span class="glyphicon glyphicon-off"></span> Logout</a> <br/>
                         </div>
                         Olá <: $Client.first_name :>, seja bem vindo ao iSell!
 :                       } else {
@@ -50,11 +50,5 @@
 
         <div id="menu">
             <div class="container">
-                <ul class="nav nav-pills">
-                    <li><a href="/?category_id=6">Jogos</a></li>
-                    <li><a href="/?category_id=4">CDs</a></li>
-                    <li><a href="/?category_id=7">Livros</a></li>
-                    <li><a href="/?category_id=5">DVDs</a></li>
-                </ul>
             </div><!-- end .container -->
         </div><!-- end #main_menu -->

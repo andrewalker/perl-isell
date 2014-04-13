@@ -22,25 +22,25 @@
                                     <div class="filter_content">
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="category_id" value="6"> Jogos
+                                                <input type="checkbox" name="category_id" value="1"> Jogos
                                             </label>
                                         </div>
 
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="category_id" value="4"> CDs
+                                                <input type="checkbox" name="category_id" value="2"> CDs
                                             </label>
                                         </div>
 
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="category_id" value="7"> Livros
+                                                <input type="checkbox" name="category_id" value="3"> Livros
                                             </label>
                                         </div>
 
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="category_id" value="5"> DVDs
+                                                <input type="checkbox" name="category_id" value="4"> DVDs
                                             </label>
                                         </div>
 
@@ -112,10 +112,11 @@
                             <div class="row">
                                 <: for $products -> $product { :>
                                 <div class="col-md-4">
-                                    <div class="one_product thumbnail">
-                                        <div class="title"><strong><: $product.name :></strong></div>
-
-                                        <img src="<: $product.image_url :>" class="image_product" alt="<: $product.name :>">
+                                    <div class="one_product thumbnail" style="text-align: center">
+                                        <div class="title"><a href="/product/<: $product.id :>"><strong><: $product.name :></strong></a></div>
+                                        <a href="/product/<: $product.id :>">
+                                            <img src="<: $product.image_url :>" class="image_product" alt="<: $product.name :>" align="center">
+                                        </a>
 
                                         <div class="caption">
                                             <div class="pull-left price">
@@ -125,7 +126,7 @@
                                             <div class="clearfix"></div>
 
                                             <div class="text-right purchase">
-                                                <a href="/product/<: $product.id :>">Ver Produto</a>
+                                                <a href="/shopping_cart/add/<: $product.id :>" class="btn btn-success">Adicionar ao Carrinho</a>
                                             </div>
                                         </div>
                                     </div><!-- end .one-product -->

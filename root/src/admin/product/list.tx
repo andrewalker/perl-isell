@@ -84,6 +84,7 @@
                                 <a href="/admin/product/<: $p.id :>/remove"><span class="glyphicon glyphicon-trash"></span></a>
                             </td>
                         </tr>
+:                       }
                     </tbody>
 
                 </table>

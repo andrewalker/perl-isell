@@ -58,8 +58,12 @@
                     <p>&nbsp;</p>
                     <hr>
 
-                    <div class="text-right">
+                    <div class="pull-right">
                         <a href="/shopping_cart/checkout" class="btn btn-success btn-lg">Finalizar Compra</a>
+                    </div>
+
+                    <div class="text-left">
+                        <a href="/product/list" class="btn">Continuar navegando</a>
                     </div>
 :                 } else {
                     <p class="lead">Seu carrinho está vazio</p>
