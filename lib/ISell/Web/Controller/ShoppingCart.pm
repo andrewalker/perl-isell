@@ -23,11 +23,18 @@ sub add : Chained('base') Args(1) {
 
     $ctx->session->{cart} = $cart;
 
-    $ctx->res->redirect('/shopping_cart');
+    $ctx->res->redirect(
+        $ctx->uri_for(
+            $self->action_for('list'),
+            { mid => $ctx->set_status_msg("Item adicionado com sucesso.") }
+        )
+    );
 }
 
 sub list : Chained('base') PathPart('') Args(0) {
     my ($self, $ctx) = @_;
+
+    $ctx->load_status_msgs;
 
     my @cart = @{ $ctx->session->{cart} || [] };
     my @items = map { $ctx->model('DB::Product')->find($_) } @cart;
@@ -69,9 +76,9 @@ sub checkout : Chained('base') Args(0) {
         $total += $_->price;
     }
 
-$ctx->session->{cart} = [];
+    $ctx->session->{cart} = [];
     $ctx->stash( template => 'checkout.tx', items => \@items, total => $total );
-    
+
 }
 
 __PACKAGE__->meta->make_immutable;

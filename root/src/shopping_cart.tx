@@ -9,6 +9,16 @@
 
                 <div class="page-content">
 
+:                 if ($status_msg) {
+                    <div class="alert alert-success"><: $status_msg :></div>
+:                 }
+
+:                 if ($error_msg) {
+                    <div class="alert alert-warning"><: $error_msg :></div>
+:                 }
+
+:                 if $items.size() {
+
                     <table class="table checkout-table">
                         <thead>
                             <tr>
@@ -24,7 +34,7 @@
                                 <td class="text-center"><input type="number" class="form-control" value="1"></td>
                                 <td><: $item.name :></td>
                                 <td>R$ <: $item.price :></td>
-                                <td class="text-center"><a href="#"><span class="glyphicon glyphicon-trash"></span> Remover</a></td>
+                                <td class="text-center"><a href="/shopping_cart/remove/<: $item.id :>"><span class="glyphicon glyphicon-trash"></span> Remover</a></td>
                             </tr>
 :                           }
                         </tbody>
@@ -33,7 +43,7 @@
                                 <td class="text-center"></td>
                                 <td>Total</td>
                                 <td>R$ <: $total :></td>
-                                <td class="text-center"><a href="#" class="btn btn-warning" >Limpar Tudo</a></td>
+                                <td class="text-center"><a href="/shopping_cart/clear" class="btn btn-warning" >Limpar Tudo</a></td>
                             </tr>
                         </tfoot>
                     </table>
@@ -44,6 +54,10 @@
                     <div class="text-right">
                         <a href="/shopping_cart/checkout" class="btn btn-success btn-lg">Finalizar Compra</a>
                     </div>
+:                 } else {
+                    <p class="lead">Seu carrinho está vazio</p>
+                    <a href="/" class="btn btn-success btn-lg">Voltar</a>
+:                 }
 
                 </div>
 

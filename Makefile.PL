@@ -21,6 +21,7 @@ requires 'Catalyst::Plugin::ConfigLoader';
 requires 'Catalyst::Plugin::Static::Simple';
 requires 'Catalyst::Action::RenderView';
 requires 'Catalyst::Component::InstancePerContext';
+requires 'Catalyst::Plugin::StatusMessage';
 requires 'Data::Manager';
 requires 'Moose';
 requires 'MooseX::Types::Email';
