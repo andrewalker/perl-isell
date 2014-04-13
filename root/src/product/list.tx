@@ -9,6 +9,7 @@
                     <div class="col-md-3">
                         <div class="search_filters">
 
+:                           block main_form | fif($fields) -> {
                             <form id="search_filters">
 
                                 <p class="lead">Filtros</p>
@@ -18,8 +19,7 @@
                                         <strong>Categorias</strong>
                                     </div>
 
-                                        <div class="filter_content">
-
+                                    <div class="filter_content">
                                         <div class="checkbox">
                                             <label>
                                                 <input type="checkbox" name="category_id" value="6"> Jogos
@@ -60,13 +60,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="min_price">De</label>
-                                                    <input type="text" class="form-control" id="min_price">
+                                                    <input type="text" class="form-control" id="min_price" name="price_from">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="max_price">Até</label>
-                                                    <input type="text" class="form-control" id="max_price">
+                                                    <input type="text" class="form-control" id="max_price" name="price_to">
                                                 </div>
                                             </div>
                                         </div>
@@ -77,7 +77,10 @@
                                     </div><!-- end .filter_content -->
                                 </div><!-- end .one_filter -->
 
+                                <input type="hidden" name="sort" id="real_order_by" />
+
                             </form><!-- end #search_filters -->
+:                           }
 
                         </div><!-- end .search_filters -->
                     </div><!-- end .col-md-3 -->
@@ -134,13 +137,11 @@
 
                         <ul class="pagination">
 
-                            <: if 0 < $pager.current_page - 1 { :>
-                            <li><a id="page-<: $pager.current_page -1 :>">&laquo;</a></li>
-                            <:
-                            }
-                            if $pager.last_page != ($pager.current_page+1) { :>
-                            <li><a id="page-<: $pager.current_page + 1 :>">&raquo;</a></li>
-                            <:}:>
+:                           if 0 < $pager.current_page - 1 {
+                            <li><a href="#" id="page-<: $pager.current_page -1 :>">&laquo;</a></li>
+:                           } if $pager.last_page != ($pager.current_page+1) {
+                            <li><a href="#" id="page-<: $pager.current_page + 1 :>">&raquo;</a></li>
+:                           }
                         </ul>
 
                     </div><!-- end .col-md-9 -->

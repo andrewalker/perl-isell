@@ -15,12 +15,14 @@ sub base : Chained('/') PathPrefix CaptureArgs(0) {
 sub list : Chained('base') Args(0) {
     my ($self, $ctx) = @_;
 
-    my $list = $ctx->model->list($ctx->req->params);
+    my $fields = $ctx->req->params || {};
+    my $list = $ctx->model->list($fields);
 
     $ctx->stash(
         products => $list->{products},
         pager    => $list->{pager},
         template => 'product/list.tx',
+        fields   => $fields,
     );
 }
 
