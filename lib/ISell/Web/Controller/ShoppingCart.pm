@@ -31,6 +31,43 @@ sub add : Chained('base') Args(1) {
     );
 }
 
+sub remove : Chained('base') Args(1) {
+    my ($self, $ctx, $id) = @_;
+
+    my @old_cart = @{ $ctx->session->{cart} || [] };
+
+    my @new_cart;
+
+    for my $item (@old_cart) {
+        if ($item != $id) {
+            push @new_cart, $item;
+        }
+    }
+
+    $ctx->session->{cart} = \@new_cart;
+
+    $ctx->res->redirect(
+        $ctx->uri_for(
+            $self->action_for('list'),
+            { mid => $ctx->set_status_msg("Item removido com sucesso.") }
+        )
+    );
+}
+
+sub clear : Chained('base') Args(0) {
+    my ($self, $ctx) = @_;
+
+    $ctx->session->{cart} = [];
+
+    $ctx->res->redirect(
+        $ctx->uri_for(
+            $self->action_for('list'),
+            { mid => $ctx->set_status_msg("Carrinho esvaziado.") }
+        )
+    );
+}
+
+
 sub list : Chained('base') PathPart('') Args(0) {
     my ($self, $ctx) = @_;
 
