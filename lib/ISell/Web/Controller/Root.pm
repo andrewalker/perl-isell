@@ -33,6 +33,7 @@ sub load_default {
     $template .= '.tx';
 
     if (-e $c->config->{root} . '/src/' . $template) {
+        $c->log->info("Loading default for $template");
         $c->stash(
             template => $template,
             static_root_uri => $c->uri_for('static'),
