@@ -16,6 +16,7 @@
                 </div>
                 <div id="user" class="pull-right">
                   <a href="/admin/logout" class="btn btn-danger"><span class="glyphicon glyphicon-off"></span> Logout</a>
+                </div>
                 <div class="clearfix"></div>
             </div>
         </div>
