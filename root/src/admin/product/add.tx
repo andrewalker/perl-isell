@@ -27,7 +27,6 @@
                 <ul class="nav nav-pills">
                     <li><a href="/admin/">Vendas</a></li>
                     <li><a href="/admin/client/list">Clientes</a></li>
-                    <li><a href="/admin/product/categories">Categorias</a></li>
                     <li><a class="active" href="/admin/product/list">Produtos</a></li>
                 </ul>
 
@@ -65,8 +64,10 @@
                                 <label for="category" class="col-sm-2 control-label">Categoria</label>
                                 <div class="col-sm-10">
                                     <select class="form-control" id="category">
-                                        <option value="jogos">Jogos</option>
-                                        <option value="cds">CDs</option>
+                                        <option value="1">Jogos</option>
+                                        <option value="2">CDs</option>
+                                        <option value="3">Livros</option>
+                                        <option value="4">DVDs</option>
                                     </select>
                                 </div>
                             </div>
@@ -79,52 +80,6 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-6">
-
-                                    <p class="lead">Dimensões (em CM)</p>
-
-                                    <div class="form-group">
-                                        <label for="width" class="col-sm-4 control-label">Largura</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="width">
-                                                <span class="input-group-addon">Cm</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="height" class="col-sm-4 control-label">Altura</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="height">
-                                                <span class="input-group-addon">Cm</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="depth" class="col-sm-4 control-label">Profund.</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="depth">
-                                                <span class="input-group-addon">Cm</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="weight" class="col-sm-4 control-label">Peso</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="weight">
-                                                <span class="input-group-addon">Kg</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
                                 <div class="col-md-6">
 
                                     <p class="lead">Preço / UN</p>
@@ -150,39 +105,12 @@
                             </div>
 
                         </div>
-
-                        <div class="col-md-6">
-
-                            <p class="lead">Imagens do Produto</p>
-
-                            <input type="button" class="btn btn-default" value="Adicionar">
-                            <input type="button" class="btn btn-primary" value="Enviar">
-
-                            <p>&nbsp;</p>
-
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Principal</th>
-                                        <th>Foto</th>
-                                        <th>Tamanho</th>
-                                        <th>Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="4">Nenhuma imagem cadastrada</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
                     </div>
 
                     <hr>
 
                     <div class="pull-right">
-                        <a href="clients.html" class="btn btn-danger">Cancelar</a>
+                        <a href="/admin/product/list" class="btn btn-danger">Cancelar</a>
                         <input type="submit" class="btn btn-success" value="Salvar">
                     </div>
 

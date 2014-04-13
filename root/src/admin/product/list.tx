@@ -27,7 +27,6 @@
                 <ul class="nav nav-pills">
                     <li><a href="/admin/">Vendas</a></li>
                     <li><a href="/admin/client/list">Clientes</a></li>
-                    <li><a href="/admin/product/categories">Categorias</a></li>
                     <li><a class="active" href="/admin/product/list">Produtos</a></li>
                 </ul>
 
@@ -43,28 +42,19 @@
                             <div class="col-md-6">
                                 <label for="product">Procurar Produtos</label><br>
                                 <div class="form-group">
-                                    <input type="text" id="product" name="product" class="form-control filters-input-large" placeholder="Digite um ID ou nome">
+                                    <input type="text" id="product" name="product" class="form-control filters-input-large" placeholder="Digite o nome de um produto">
                                 </div>
                                 <button type="submit" class="btn btn-warning">Buscar</button>
                             </div>
 
-                            <div class="col-md-2 col-md-offset-2">
+                            <div class="col-md-2 col-md-offset-4">
                                 <label for="product-category">Categoria</label><br>
                                 <div class="form-group">
                                     <select id="product-category" class="form-control filters-select">
-                                        <option value="jogos">Jogos</option>
-                                        <option value="cds">CDs</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-2">
-                                <label for="client-orderby">Ordenação</label><br>
-                                <div class="form-group">
-                                    <select id="client-orderby" class="form-control filters-select">
-                                        <option value="id">ID</option>
-                                        <option value="name">Nome</option>
-                                        <option value="category">Categoria</option>
+                                        <option value="1">Jogos</option>
+                                        <option value="2">CDs</option>
+                                        <option value="3">Livros</option>
+                                        <option value="4">DVDs</option>
                                     </select>
                                 </div>
                             </div>
@@ -77,36 +67,26 @@
                         <tr>
                             <th style="width:5%;">ID</th>
                             <th style="width:40%;">Nome</th>
-                            <th style="width:30%;">Categorias</th>
-                            <th style="width:15%;">Compras</th>
+                            <th style="width:30%;">Categoria</th>
+                            <th style="width:15%;">Estoque</th>
                             <th style="width:10%;">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
+:                       for $products -> $p {
                         <tr>
-                            <td>01001</td>
-                            <td>Battlefield 4</td>
-                            <td>Jogos, CDs</td>
-                            <td>50</td>
+                            <td><: $p.id :></td>
+                            <td><: $p.name :></td>
+                            <td><: $p.category.name :></td>
+                            <td><: $p.amount_in_stock :></td>
                             <td>
-                                <a href="add_product.html"><span class="glyphicon glyphicon-pencil"></span></a>
-                                <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                                <a href="/admin/product/<: $p.id :>"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a href="/admin/product/<: $p.id :>/remove"><span class="glyphicon glyphicon-trash"></span></a>
                             </td>
                         </tr>
                     </tbody>
 
                 </table>
-
-                <ul class="pagination">
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&raquo;</a></li>
-                </ul>
-
             </div>
         </div>
 

@@ -27,7 +27,6 @@
                 <ul class="nav nav-pills">
                     <li><a href="/admin/">Vendas</a></li>
                     <li class="active"><a href="/admin/client/list">Clientes</a></li>
-                    <li><a href="/admin/product/categories">Categorias</a></li>
                     <li><a href="/admin/product/list">Produtos</a></li>
                 </ul>
 
@@ -46,16 +45,6 @@
                                     <input type="text" id="client" name="client" class="form-control filters-input-large" placeholder="Digite um ID, nome, CPF ou email">
                                 </div>
                                 <button type="submit" class="btn btn-warning">Buscar</button>
-                            </div>
-
-                            <div class="col-md-2 col-md-offset-2">
-                                <label for="client-city">Cidade</label><br>
-                                <div class="form-group">
-                                    <select id="client-city" class="form-control filters-select">
-                                        <option value="americana">Americana</option>
-                                        <option value="sao-carlos">São Carlos</option>
-                                    </select>
-                                </div>
                             </div>
                         </form>
                     </div>

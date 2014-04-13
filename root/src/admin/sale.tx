@@ -27,7 +27,6 @@
                 <ul class="nav nav-pills">
                     <li><a href="/admin/">Vendas</a></li>
                     <li><a href="/admin/client/list">Clientes</a></li>
-                    <li><a href="/admin/product/categories">Categorias</a></li>
                     <li><a href="/admin/product/list">Produtos</a></li>
                 </ul>
 
