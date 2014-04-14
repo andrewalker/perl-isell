@@ -1,0 +1,10 @@
+<p>Olá, <: $main_receiver_name :>,</p>
+
+<p>Você acaba de efetuar uma nova venda para <: $client :> no site, no valor de R$ <: $total :>.
+
+<p>Veja mais detalhes em: <a href="<: $details_url :>"><: $details_url :></a>.</p>
+
+<p>
+================<br/>
+E-Commerce ISell
+</p>

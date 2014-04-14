@@ -187,6 +187,12 @@ sub checkout : Chained('base') Args(0) {
         status     => 'Aguardando confirmação de pagamento',
     });
 
+    $ctx->model('EmailsQueue')->send_new_sale_email({
+        total       => $total,
+        client      => $ctx->session->{client}->first_name . ' ' . $ctx->session->{client}->last_name,
+        details_url => $ctx->uri_for('/admin/sale/' . $order->id),
+    });
+
     $ctx->stash( template => 'checkout.tx', items => \@items, total => $total );
 }
 
