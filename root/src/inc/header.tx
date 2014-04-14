@@ -16,19 +16,17 @@
                     </a>
                 </div>
 
-                <div class="pull-right">
-                    <ul class="nav nav-pills pull-right">
+                <div class="pull-right text-right">
+                    <div class="nav">
 :                       if $Client {
-                        <div class="text-right">
-                            <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span>Seu carrinho</a> |
-                            <a href="/client/logout"><span class="glyphicon glyphicon-off"></span> Logout</a> <br/>
-                        </div>
-                        Olá <: $Client.first_name :>, seja bem vindo ao iSell!
+                        <a href="/shopping_cart"><span class="glyphicon glyphicon-shopping-cart"></span> Seu carrinho</a> |
+                        <a href="/client/logout"><span class="glyphicon glyphicon-off"></span> Logout</a> <br/>
+                        <p>Olá <: $Client.first_name :>, seja bem vindo ao iSell!</p>
 :                       } else {
-                        <li><a href="/client/login">Login</a></li>
-                        <li><a href="/client/signup">Cadastre-se</a></li>
+                        <a href="/client/signup"><span class="glyphicon glyphicon-user"></span> Cadastre-se</a> |
+                        <a href="/client/login"><span class="glyphicon glyphicon-log-in"></span> Login</a> <br/>
 :                       }
-                    </ul>
+                    </div>
 
                     <div class="clearfix"></div>
 
@@ -36,7 +34,7 @@
                         <form class="form-inline">
 
                             <div class="form-group">
-                                <input type="text" id="header_search" class="form-control" placeholder="Encontre um produto">
+                                <input type="text" id="header_search" class="form-control" placeholder="Encontre um produto" name="term">
                             </div>
                             <input type="submit" class="btn btn-warning" value="buscar">
 

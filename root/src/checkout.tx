@@ -62,7 +62,7 @@
                               <dd>R$ <: $total :></dd>
 
                               <dt>Frete</dt>
-                              <dd>R$ 0,00</dd>
+                              <dd>R$ 5,00</dd>
 
                               <dt>Total da Compra</dt>
                               <dd>R$ <: $total :></dd>
@@ -80,51 +80,13 @@
                             </address>
                         </div>
 
-                        <div class="col-md-3">
-                            <p class="lead">Método de Envio</p>
-
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="shipping_method" id="shipping_method_sedex" value="sedex"> Sedex
-                                </label>
-                            </div>
-
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="shipping_method" id="shipping_method_pac" value="pac"> PAC
-                                </label>
-                            </div>
-
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="shipping_method" id="shipping_method_none" value="none"> Retirar na loja
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <p class="lead">Forma de Pagamento</p>
-
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="payment_method" id="payment_method_cast" value="cash"> Depósito à Vista
-                                </label>
-                            </div>
-
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="payment_method" id="payment_method_pagseguro" value="pagseguro"> PagSeguro
-                                </label>
-                            </div>
-                        </div>
-
                     </div><!-- end .row -->
 
                     <p>&nbsp;</p>
                     <hr>
 
                     <div class="text-right">
-                        <a href="/product/list" class="btn btn-success btn-lg">Pagar e Finalizar</a>
+                        <a href="http://pagseguro.com.br" class="btn btn-success btn-lg">Redirecionar ao PagSeguro</a>
                     </div>
 
 

@@ -7,6 +7,8 @@ BEGIN { extends 'Catalyst::Controller' };
 sub base : Chained('/') PathPrefix CaptureArgs(0) {
     my ($self, $ctx) = @_;
 
+    $ctx->load_status_msgs;
+
     $ctx->stash(
         current_model => 'DB::Product',
     );

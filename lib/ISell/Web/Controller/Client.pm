@@ -43,9 +43,18 @@ sub login : Chained('base') Args(0) {
     }
     else {
         $ctx->session(client => $client);
-        $ctx->res->redirect('/shopping_cart');
+        $ctx->res->redirect(
+            $ctx->uri_for('/product/list', { mid => $ctx->set_status_msg('Bem-vindo de volta, <b>' . $client->first_name . '</b>!') })
+        );
         return;
     }
+}
+
+sub logout : Chained('base') Args(0) {
+    my ($self, $ctx) = @_;
+
+    $ctx->delete_session();
+    $ctx->res->redirect('/');
 }
 
 __PACKAGE__->meta->make_immutable;

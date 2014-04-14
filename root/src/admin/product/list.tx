@@ -27,7 +27,7 @@
                 <ul class="nav nav-pills">
                     <li><a href="/admin/">Vendas</a></li>
                     <li><a href="/admin/client/list">Clientes</a></li>
-                    <li><a class="active" href="/admin/product/list">Produtos</a></li>
+                    <li class="active"><a href="/admin/product/list">Produtos</a></li>
                 </ul>
 
             </div>
@@ -36,13 +36,22 @@
         <div id="content">
             <div class="container">
 
+:                 if ($status_msg) {
+                    <div class="alert alert-success"><: $status_msg :></div>
+:                 }
+
+:                 if ($error_msg) {
+                    <div class="alert alert-danger"><: $error_msg :></div>
+:                 }
+
                 <div class="filters">
                     <div class="row">
-                        <form class="form-inline" role="form">
+:                       block main_form | fif($fields) -> {
+                        <form class="form-inline" role="form" id='search_form'>
                             <div class="col-md-6">
                                 <label for="product">Procurar Produtos</label><br>
                                 <div class="form-group">
-                                    <input type="text" id="product" name="product" class="form-control filters-input-large" placeholder="Digite o nome de um produto">
+                                    <input type="text" id="product" name="term" class="form-control filters-input-large" placeholder="Digite o nome de um produto">
                                 </div>
                                 <button type="submit" class="btn btn-warning">Buscar</button>
                             </div>
@@ -50,7 +59,8 @@
                             <div class="col-md-2 col-md-offset-4">
                                 <label for="product-category">Categoria</label><br>
                                 <div class="form-group">
-                                    <select id="product-category" class="form-control filters-select">
+                                    <select id="product-category" class="form-control filters-select" name="category_id" onchange="document.getElementById('search_form').submit()">
+                                        <option value="">Todas</option>
                                         <option value="1">Jogos</option>
                                         <option value="2">CDs</option>
                                         <option value="3">Livros</option>
@@ -59,6 +69,7 @@
                                 </div>
                             </div>
                         </form>
+:                       }
                     </div>
                 </div>
 
@@ -81,13 +92,21 @@
                             <td><: $p.amount_in_stock :></td>
                             <td>
                                 <a href="/admin/product/<: $p.id :>"><span class="glyphicon glyphicon-pencil"></span></a>
-                                <a href="/admin/product/<: $p.id :>/remove"><span class="glyphicon glyphicon-trash"></span></a>
+                                <a href="/admin/product/remove/<: $p.id :>"><span class="glyphicon glyphicon-trash"></span></a>
                             </td>
                         </tr>
 :                       }
                     </tbody>
 
                 </table>
+
+                <ul class="pagination">
+:                   if $pager.current_page - 1 > 0 {
+                    <li><a href="#" id="page-<: $pager.current_page - 1 :>">&laquo;</a></li>
+:                   } if $pager.last_page > $pager.current_page {
+                    <li><a href="#" id="page-<: $pager.current_page + 1 :>">&raquo;</a></li>
+:                   }
+                </ul>
             </div>
         </div>
 

@@ -17,7 +17,7 @@ jQuery(function ($) {
             if(test.length>1)
                 location.href = location.href + '&page=' + page;
             else
-                location.href = location.href + '?page=' + page;
+                location.href = location.href + '?&page=' + page;
         }
         e.preventDefault();
     });

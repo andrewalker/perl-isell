@@ -3,6 +3,15 @@
 
         <div id="content">
             <div class="container">
+                <div class="row">
+:                 if ($status_msg) {
+                    <div class="alert alert-success"><: $status_msg | raw :></div>
+:                 }
+
+:                 if ($error_msg) {
+                    <div class="alert alert-danger"><: $error_msg | raw :></div>
+:                 }
+                </div>
 
                 <div class="row">
 
