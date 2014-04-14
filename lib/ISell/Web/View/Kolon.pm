@@ -13,6 +13,10 @@ has '+function' => (
     }
 );
 
+has '+module' => (
+    default => sub { ['Text::Xslate::Bridge::Star'] }
+);
+
 sub fillinform {
     my ($form_values) = @_;
     return html_builder {

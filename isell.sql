@@ -58,7 +58,7 @@ CREATE TABLE shopping_order_item (
 CREATE TABLE payment (
     id SERIAL PRIMARY KEY,
     shopping_order_id INTEGER NOT NULL,
-    confirmed_at TIMESTAMP NOT NULL,
+    confirmed_at TIMESTAMP,
     started_at TIMESTAMP NOT NULL DEFAULT NOW(),
     status TEXT NOT NULL,
     comments TEXT,

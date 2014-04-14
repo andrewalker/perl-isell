@@ -1,4 +1,5 @@
 package ISell::Web::Controller::ShoppingCart;
+use utf8;
 use Moose;
 use namespace::autoclean;
 use Scalar::Util qw/looks_like_number/;
@@ -171,7 +172,11 @@ sub checkout : Chained('base') Args(0) {
         $total += $_->{price} * $_->{quantity};
     }
 
-    $ctx->session->{cart} = {};
+    $order->add_to_payments({
+        started_at => \'now()',
+        status     => 'Aguardando confirmação de pagamento',
+    });
+
     $ctx->stash( template => 'checkout.tx', items => \@items, total => $total );
 }
 

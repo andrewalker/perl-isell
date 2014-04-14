@@ -34,20 +34,6 @@
         <div id="content">
             <div class="container">
 
-                <div class="filters">
-                    <div class="row">
-                        <form class="form-inline" role="form">
-                            <div class="col-md-4">
-                                <label for="sale-client">Procurar Venda</label><br>
-                                <div class="form-group">
-                                    <input type="text" id="sale-client" name="sale-client" class="form-control filters-input-medium" placeholder="Digite o nome de um cliente">
-                                </div>
-                                <button type="submit" class="btn btn-warning">Buscar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
                 <table class="table table-hover">
                     <thead>
                         <tr>

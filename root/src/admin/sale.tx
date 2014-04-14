@@ -37,20 +37,28 @@
             <div class="container">
 
                 <div class="page-title">
-                    <h2 class="pull-left">Venda 1010 (Fulano de Tal)</h2>
+                    <h2 class="pull-left">Venda <: $sale.id :> (<: $sale.client.first_name :> <: $sale.client.last_name :>)</h2>
 
                     <div class="pull-right">
-                        <a href="add_client.html" class="btn btn-danger">Excluir</a>
-                        <a href="#" class="btn btn-default">Imprimir</a>
+                        <a href="/admin/sale/<: $sale.id :>/cancel" class="btn btn-warning">Cancelar Venda</a>
+                        <a href="/admin/sale/<: $sale.id :>/confirm" class="btn btn-success">Confirmar Pagamento</a>
                     </div>
 
                     <div class="clearfix"></div>
                 </div>
 
+:                 if ($status_msg) {
+                    <div class="alert alert-success"><: $status_msg :></div>
+:                 }
+
+:                 if ($error_msg) {
+                    <div class="alert alert-danger"><: $error_msg :></div>
+:                 }
+
                 <hr>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-8 col-md-offset-2">
 
                         <div class="row">
                             <p class="lead">Resumo da Venda</p>
@@ -60,28 +68,28 @@
                                 <div class="row">
                                     <label class="col-sm-4 text-right">ID</label>
                                     <div class="col-sm-8">
-                                        1010
+                                        <: $sale.id :>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <label class="col-sm-4 text-right">Data</label>
                                     <div class="col-sm-8">
-                                        21/11/2013
+                                        <: $sale.created_at.strftime('%d/%m/%Y') :>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <label class="col-sm-4 text-right">Status</label>
                                     <div class="col-sm-8">
-                                        Em aberto
+                                        <: $payment && $payment.status || 'Iniciado' :>
                                     </div>
                                 </div>
 
                                 <p>&nbsp;</p>
 
                                 <strong>Endereço de Entrega</strong><br>
-                                <address>Rua Teste, 123, São Carlos - SP</address>
+                                <address><: $sale.client.address :><br/><: $sale.client.city :> - <: $sale.client.state | uc :></address>
 
                             </div>
 
@@ -90,21 +98,22 @@
                                  <div class="row">
                                     <label class="col-sm-5 text-right">ID do Cliente</label>
                                     <div class="col-sm-7">
-                                        (XX) 1234-5678
+                                        <: $sale.client.id :>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <label class="col-sm-5 text-right">Nome</label>
                                     <div class="col-sm-7">
-                                        Fulano de Tal
+                                        <: $sale.client.first_name :>
+                                        <: $sale.client.last_name :>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <label class="col-sm-5 text-right">CPF</label>
                                     <div class="col-sm-7">
-                                        123.456.789-10
+                                        <: $sale.client.cpf :>
                                     </div>
                                 </div>
 
@@ -113,14 +122,14 @@
                                 <div class="row">
                                     <label class="col-sm-5 text-right">Telefone</label>
                                     <div class="col-sm-7">
-                                        (xx) 1234-5678
+                                        <: $sale.client.telephone :>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <label class="col-sm-5 text-right">Email</label>
                                     <div class="col-sm-7">
-                                        fulano@tal.com
+                                        <: $sale.client.email :>
                                     </div>
                                 </div>
 
@@ -143,16 +152,18 @@
                                     <tfoot>
                                         <tr>
                                             <td colspan="3">Total</td>
-                                            <td>R$ 1.200,00</td>
+                                            <td><: $total :></td>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>01</td>
-                                            <td>Battlefield 4</td>
-                                            <td>05</td>
-                                            <td>R$ 1.200,00</td>
-                                        </tr>
+:                                       for $items -> $item {
+                                            <tr>
+                                                <td><: $item.product.id :></td>
+                                                <td><: $item.product.name :></td>
+                                                <td><: $item.quantity :></td>
+                                                <td>R$ <: $item.product.price :></td>
+                                            </tr>
+:                                       }
                                     </tbody>
                                 </table>
 
@@ -161,70 +172,12 @@
                         </div>
 
                     </div>
-
-                    <div class="col-md-6">
-
-                        <p class="lead pull-left">Histórico</p>
-                        <a class="pull-right btn btn-warning" href="#modal-add-log" data-toggle="modal">Adicionar</a>
-                        <div class="clearfix"></div>
-
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Data</th>
-                                    <th>Ocorrido    </th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>21/11/2013 13:33:22</td>
-                                    <td>Compra Realizada</td>
-                                    <td>Completo</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
 
                 <hr>
 
             </div>
         </div>
-
-        <div id="modal-add-log" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Adicionar Interação</h4>
-                    </div>
-
-                    <form role="form">
-                        <div class="modal-body">
-
-                            <div class="form-group">
-                                <label for="log-item">Ocorrido</label>
-                                <input type="text" class="form-control" id="log-item" placeholder="Ex: Enviado para cliente">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="log-status">Status</label>
-                                <input type="text" class="form-control" id="log-status" placeholder="Ex: Completo">
-                            </div>
-
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Adicionar</button>
-                        </div>
-                    </form>
-
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>

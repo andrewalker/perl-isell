@@ -36,29 +36,14 @@
         <div id="content">
             <div class="container">
 
-                <div class="filters">
-                    <div class="row">
-                        <form class="form-inline" role="form">
-                            <div class="col-md-6">
-                                <label for="client">Procurar Cliente</label><br>
-                                <div class="form-group">
-                                    <input type="text" id="client" name="client" class="form-control filters-input-large" placeholder="Digite um ID, nome, CPF ou email">
-                                </div>
-                                <button type="submit" class="btn btn-warning">Buscar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
                 <table class="table table-hover">
                     <thead>
                         <tr>
                             <th style="width:5%;">ID</th>
                             <th style="width:10%;">CPF</th>
-                            <th style="width:30%;">Nome</th>
-                            <th style="width:20%;">E-mail</th>
+                            <th style="width:40%;">Nome</th>
+                            <th style="width:30%;">E-mail</th>
                             <th style="width:15%;">Compras</th>
-                            <th style="width:10%;">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,10 +54,6 @@
                             <td><: $client.name :></td>
                             <td><: $client.email :></td>
                             <td><: $client.sales :></td>
-                            <td>
-                                <a href="/admin/client/<: $client.id :>"><span class="glyphicon glyphicon-pencil"></span></a>
-                                <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
-                            </td>
                         </tr>
 :                       }
                     </tbody>
