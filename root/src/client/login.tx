@@ -27,6 +27,7 @@
                                         <input class="form-control" id="password" type="password" name="password">
                                     </div>
                                 </div>
+                                <input type="submit" class="btn btn-success" value="Entrar">
 
                             </form>
                         </div>

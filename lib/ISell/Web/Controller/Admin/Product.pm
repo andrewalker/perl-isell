@@ -19,6 +19,7 @@ sub list :Chained('base') Args(0) {
     my $fields = $ctx->req->params || {};
     $fields->{rows} = 20;
     $fields->{sort} = '+id';
+    $fields->{private} = 1;
 
     my $list = $ctx->model->list($fields);
 

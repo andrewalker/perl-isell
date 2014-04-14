@@ -13,6 +13,10 @@ sub list {
     };
     my $rs = $self;
 
+    if (!$p->{private}) {
+        $search->{amount_in_stock} = { '>', 0 };
+    }
+
     if (my $o = $p->{sort}) {
         if (substr($o, 0, 1) eq '-') {
             $opts->{order_by} = { -desc => substr $o, 1 };

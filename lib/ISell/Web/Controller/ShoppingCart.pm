@@ -52,6 +52,15 @@ sub update : Chained('base') Args(1) POST {
         );
     }
 
+    if ($ctx->model('DB::Product')->find($id)->amount_in_stock < $qty) {
+        return $ctx->res->redirect(
+            $ctx->uri_for(
+                $self->action_for('list'),
+                { mid => $ctx->set_error_msg("Quantidade indisponível em estoque.") }
+            )
+        );
+    }
+
     my %cart = %{ $ctx->session->{cart} || {} };
 
     $cart{$id}{quantity} = $qty;
@@ -149,6 +158,7 @@ sub checkout : Chained('base') Args(0) {
 
     my @items = map {
         $i = $ctx->model('DB::Product')->find($_);
+        $i->update({ amount_in_stock => $i->amount_in_stock - $cart{$_}{quantity} });
         {
             id       => $i->id,
             name     => $i->name,
