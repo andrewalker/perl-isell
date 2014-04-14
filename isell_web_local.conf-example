@@ -1,0 +1,33 @@
+<model DB>
+    <connect_info>
+        dsn dbi:Pg:dbname=isell
+        user "andre"
+        password ""
+    </connect_info>
+</model>
+
+<model Email>
+    <args>
+        <mail_client>
+            mailer SMTP
+            <mailer_args>
+                host smtp.sendgrid.net
+                port 465
+                username xxx
+                password yyy
+                ssl 1
+            </mailer_args>
+        </mail_client>
+
+        <template_args>
+            path __path_to(root/emails)__
+        </template_args>
+
+        from andre@andrewalker.net
+    </args>
+</model>
+
+<model EmailsQueue>
+    main_receiver some@email
+    main_receiver_name "André Walker"
+</model>
